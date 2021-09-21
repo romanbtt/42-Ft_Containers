@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:16:51 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/20 17:59:56 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:52:19 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ void	testVectorCopyConstructor( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
 	NAMESPACE::vector<int> original(10, 1);
-	for (int i = 0; i < original.size(); i++)
+	for (size_t i = 0; i < original.size(); i++)
 		original[i] += i;
 	NAMESPACE::vector<int> test(original);
 
@@ -224,7 +224,7 @@ void	testVectorOperatorEqual( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
 	NAMESPACE::vector<int> original(7, 1);
-	for (int i = 0; i < original.size(); i++)
+	for (size_t i = 0; i < original.size(); i++)
 		original[i] += i * 2;
 	NAMESPACE::vector<int> test = original;
 

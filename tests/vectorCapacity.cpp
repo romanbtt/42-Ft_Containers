@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:07:20 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/20 18:29:59 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:47:29 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ bool    testVectorCapacity( void )
             testVectorMaxSize(true, "std", false);
         else if (!input.compare("3"))
             testVectorResize(true, "std", false);
-        else if (!input.compare("4"))
-            testVectorCapacity(true, "std", false);
-        else if (!input.compare("5"))
-            testVectorEmpty(true, "std", false);
-		else if (!input.compare("5"))
-            testVectorReserve(true, "std", false);
-        else if (!input.compare("A") || !input.compare("a"))
-            testVectorConstructorAll();
+        //else if (!input.compare("4"))
+        //    testVectorCapacity(true, "std", false);
+        //else if (!input.compare("5"))
+        //    testVectorEmpty(true, "std", false);
+		//else if (!input.compare("5"))
+        //    testVectorReserve(true, "std", false);
+        //else if (!input.compare("A") || !input.compare("a"))
+        //    testVectorConstructorAll();
         else if (!input.compare("B") || !input.compare("b"))
             return (false);
         else if (!input.compare("E") || !input.compare("e"))

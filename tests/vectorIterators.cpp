@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:21:31 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/20 18:01:04 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:52:52 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void    testVectorIteratorBegin( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
     NAMESPACE::vector<int> vec(10, 1);
-	for (int i = 0; i < vec.size(); i++)
+	for (size_t i = 0; i < vec.size(); i++)
 		vec[i] += i;
 
     if (!all)
@@ -113,7 +113,7 @@ void    testVectorIteratorEnd( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
     NAMESPACE::vector<int> vec(10, 1);
-	for (int i = 0; i < vec.size(); i++)
+	for (size_t i = 0; i < vec.size(); i++)
 		vec[i] += i;
 
     if (!all)
@@ -150,7 +150,7 @@ void    testVectorIteratorRbegin( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
     NAMESPACE::vector<int> vec(10, 1);
-	for (int i = 0; i < vec.size(); i++)
+	for (size_t i = 0; i < vec.size(); i++)
 		vec[i] += i;
 
     if (!all)
@@ -187,7 +187,7 @@ void    testVectorIteratorRend( bool isStd, std::string ns, bool all )
 
     std::ofstream testFile(ns.c_str(), std::ios::out | std::ios::trunc);
     NAMESPACE::vector<int> vec(10, 1);
-	for (int i = 0; i < vec.size(); i++)
+	for (size_t i = 0; i < vec.size(); i++)
 		vec[i] += i;
 
     if (!all)

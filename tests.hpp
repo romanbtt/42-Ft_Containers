@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:57:06 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/20 16:27:42 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/09/21 15:49:05 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,12 @@ void    testVectorIteratorBegin( bool isStd, std::string ns, bool all );
 void    testVectorIteratorEnd( bool isStd, std::string ns, bool all );
 void    testVectorIteratorRbegin( bool isStd, std::string ns, bool all );
 void    testVectorIteratorRend( bool isStd, std::string ns, bool all );
+
+bool    testVectorCapacity( void );
+
+void    testVectorSize( bool isStd, std::string ns, bool all );
+void    testVectorMaxSize( bool isStd, std::string ns, bool all );
+void    testVectorResize( bool isStd, std::string ns, bool all );
+
 
 #endif
