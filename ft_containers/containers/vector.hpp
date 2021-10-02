@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:19:35 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/28 14:34:41 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/02 12:22:26 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -469,6 +469,12 @@ namespace ft
     bool	operator>=( const vector<T, Alloc> & x, const vector<T, Alloc> & y )
     {
 		return !(x < y);
+	}
+
+	template<typename T, typename Alloc>
+    void	swap( vector<T, Alloc> & x, vector<T, Alloc> & y )
+    {
+		y.swap(x);
 	}
 
 } // namespace ft
