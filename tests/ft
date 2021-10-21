@@ -1,0 +1,8 @@
+NS::vector<int> t_vector(10, 42)
+NS::stack<int, NS::vector<int> > empty
+NS::stack<int, NS::vector<int> > copy(t_vector)
+
+Size of t_vector : 10
+Size of empty    : 0
+Size of copy     : 10
+
