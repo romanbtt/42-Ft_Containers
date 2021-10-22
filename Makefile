@@ -2,62 +2,38 @@ NAME =        ft-containers
 NAME_STD =    std-containers
 
 CXX =        clang++
-CXXFLAGS =    -Wall -Wextra -Werror -std=c++98 -g #-g to delete
+CXXFLAGS =    -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 SRC_DIR = ./tests
 
 SRC_FILES =		${SRC_DIR}/main.cpp \
+				${SRC_DIR}/test_subject.cpp \
 				${SRC_DIR}/containers.cpp \
 				${SRC_DIR}/iterators.cpp \
-            	${SRC_DIR}/containers/vector/constructors/defaultConstructor.cpp \
-            	${SRC_DIR}/containers/vector/constructors/fillConstructor.cpp \
-            	${SRC_DIR}/containers/vector/constructors/rangeConstructor.cpp \
-            	${SRC_DIR}/containers/vector/constructors/copyConstructor.cpp \
-            	${SRC_DIR}/containers/vector/constructors/operatorEqual.cpp \
-            	${SRC_DIR}/containers/vector/iterators/begin.cpp \
-            	${SRC_DIR}/containers/vector/iterators/end.cpp \
-            	${SRC_DIR}/containers/vector/iterators/rbegin.cpp \
-            	${SRC_DIR}/containers/vector/iterators/rend.cpp \
-            	${SRC_DIR}/containers/vector/capacity/size.cpp \
-            	${SRC_DIR}/containers/vector/capacity/maxSize.cpp \
-            	${SRC_DIR}/containers/vector/capacity/resize.cpp \
-            	${SRC_DIR}/containers/vector/capacity/capacity.cpp \
-            	${SRC_DIR}/containers/vector/capacity/empty.cpp \
-            	${SRC_DIR}/containers/vector/capacity/reserve.cpp \
-            	${SRC_DIR}/containers/vector/element_access/operator[].cpp \
-            	${SRC_DIR}/containers/vector/element_access/at.cpp \
-            	${SRC_DIR}/containers/vector/element_access/front.cpp \
-            	${SRC_DIR}/containers/vector/element_access/back.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/assign.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/pushBack.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/popBack.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/insert.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/erase.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/swap.cpp \
-            	${SRC_DIR}/containers/vector/modifiers/clear.cpp \
-            	${SRC_DIR}/containers/vector/allocator/getAllocator.cpp \
+            	${SRC_DIR}/containers/vector/constructors/vector_constructors.cpp \
+            	${SRC_DIR}/containers/vector/iterators/vector_iterators.cpp \
+            	${SRC_DIR}/containers/vector/capacity/vector_capacity.cpp \
+            	${SRC_DIR}/containers/vector/element_access/vector_element_access.cpp \
+            	${SRC_DIR}/containers/vector/modifiers/vector_modifiers.cpp \
+            	${SRC_DIR}/containers/vector/allocator/vector_allocators.cpp \
 				${SRC_DIR}/containers/vector/relational_operators/relationalOperators.cpp \
-				${SRC_DIR}/iterators/random_access/constructors/defaultConstructor.cpp \
-				${SRC_DIR}/iterators/random_access/constructors/copyConstructor.cpp \
-				${SRC_DIR}/iterators/random_access/constructors/operatorEqual.cpp \
-				${SRC_DIR}/iterators/random_access/element_access/operatorBracket.cpp \
-				${SRC_DIR}/iterators/random_access/element_access/operatorStar.cpp \
-				${SRC_DIR}/iterators/random_access/arithmetic_operators/compound.cpp \
-				${SRC_DIR}/iterators/random_access/arithmetic_operators/decrement.cpp \
-				${SRC_DIR}/iterators/random_access/arithmetic_operators/increment.cpp \
-				${SRC_DIR}/iterators/random_access/arithmetic_operators/minus.cpp \
-				${SRC_DIR}/iterators/random_access/arithmetic_operators/plus.cpp \
+				${SRC_DIR}/containers/map/constructors/map_constructors.cpp \
+				${SRC_DIR}/containers/map/iterators/map_iterators.cpp \
+				${SRC_DIR}/containers/map/capacity/map_capacity.cpp \
+				${SRC_DIR}/containers/map/element_access/operator[].cpp \
+				${SRC_DIR}/containers/map/modifiers/map_modifiers.cpp \
+				${SRC_DIR}/containers/map/observers/map_observers.cpp \
+				${SRC_DIR}/containers/map/operations/map_operations.cpp \
+				${SRC_DIR}/containers/map/allocator/map_allocators.cpp \
+				${SRC_DIR}/containers/map/relational_operators/relationalOperators.cpp \
+				${SRC_DIR}/containers/stack/stack_tests.cpp \
+				${SRC_DIR}/iterators/random_access/constructors/ra_constructors.cpp \
+				${SRC_DIR}/iterators/random_access/element_access/ra_element_access.cpp \
+				${SRC_DIR}/iterators/random_access/arithmetic_operators/ra_arithmetic.cpp \
 				${SRC_DIR}/iterators/random_access/relational_operators/relationalOperators.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/constructors/defaultConstructor.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/constructors/copyConstructor.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/constructors/operatorEqual.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/element_access/operatorBracket.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/element_access/operatorStar.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/compound.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/decrement.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/increment.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/minus.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/plus.cpp \
+				${SRC_DIR}/iterators/random_access_reverse/constructors/rar_constructors.cpp \
+				${SRC_DIR}/iterators/random_access_reverse/element_access/rar_element_access.cpp \
+				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/rar_arithmetic.cpp \
 				${SRC_DIR}/iterators/random_access_reverse/relational_operators/relationalOperators.cpp
 
 
@@ -94,9 +70,12 @@ ${OBJ_DIR_STD}/%.o: ${SRC_DIR}/%.cpp
 clean:
 	@$(RM) -rf ${OBJ_DIR}
 	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m object files of $(NAME)\n"
+	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m object files of $(NAME_STD)\n"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m $(NAME)\n"
+	@$(RM) $(NAME_STD)
+	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m $(NAME_STD)\n"
 
 re: fclean all

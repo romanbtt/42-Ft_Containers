@@ -1,6 +1,10 @@
 #! /bin/bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/vector/vector.sh
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/map/map.sh
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/stack/stack.sh
 
 function PrintContainersMenu()
 {
@@ -27,10 +31,10 @@ function ContainersMenu()
 			VectorMenu
 		elif [[ $input == "2" ]]
 		then
-			VectorMenu
+			MapMenu
 		elif [[ $input == "3" ]]
 		then
-			VectorMenu
+			StackMenu
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorMenu

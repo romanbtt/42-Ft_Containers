@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:57:06 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/02 14:08:39 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 11:50:04 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include "../ft_containers/containers/vector.hpp"
 
 # include <map>
-//# include "../ft_containers/containers/map.hpp"
+# include "../ft_containers/containers/map.hpp"
+
+# include <stack>
+# include "../ft_containers/containers/stack.hpp"
 
 # if ISFT
 #  undef NS
@@ -76,10 +79,54 @@ void	vector_get_allocator(char *argv);
 void	vector_relational_operators(char *argv);
 
 
+
 void    dispatch_map(char *argv);
+
+void    map_default_constructor(char *argv);
+void	map_range_constructor(char *argv);
+void	map_copy_constructor(char *argv);
+void	map_operator_equal(char *argv);
+
+void	map_begin(char *argv);
+void	map_end(char *argv);
+void	map_rbegin(char *argv);
+void	map_rend(char *argv);
+
+void	map_empty(char *argv);
+void	map_size(char *argv);
+void	map_max_size(char *argv);
+
+void	map_operator_bracket(char *argv);
+
+void	map_insert(char *argv);
+void	map_erase(char *argv);
+void	map_swap(char *argv);
+void	map_clear(char *argv);
+
+void	map_key_comp(char *argv);
+void	map_value_comp(char *argv);
+
+void	map_find(char *argv);
+void	map_count(char *argv);
+void	map_lower_bound(char *argv);
+void	map_upper_bound(char *argv);
+void	map_equal_range(char *argv);
+
+void	map_get_allocator(char *argv);
+
+void	map_relational_operators(char *argv);
+
+
 
 void    dispatch_stack(char *argv);
 
+void	stack_constructor(char *argv);
+void	stack_empty(char *argv);
+void	stack_size(char *argv);
+void	stack_top(char *argv);
+void	stack_push(char *argv);
+void	stack_pop(char *argv);
+void	stack_relational_operators(char *argv);
 
 
 
@@ -117,5 +164,8 @@ void    random_access_reverse_minus(char *argv);
 void    random_access_reverse_compound(char *argv);
 
 void    random_access_reverse_relational_operators(char *argv);
+int test_subject(int argc, char** argv);
+
+
 
 #endif

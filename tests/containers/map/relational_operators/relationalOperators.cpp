@@ -6,27 +6,45 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 12:57:48 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/19 19:08:38 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:26:15 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../tests.hpp"
 
-void	vector_relational_operators(char *argv)
+void	map_relational_operators(char *argv)
 {
     bool runAll = argv[4] == '1' ? true : false;
     std::ofstream testFile(DIFF, std::ios::out | std::ios::trunc);
 
-    NS::vector<int> test1(10, 42);
-    NS::vector<int> test2(5, 84);
+    NS::map<int,int> test1;
+    NS::map<int,int> test2;
 
-	testFile << "namespace::vector<int> test1(10, 42)\n";
-    testFile << "Content of vector<int>'s test1 : ";
-    for (NS::vector<int>::iterator it = test1.begin(); it != test1.end(); it++)
-       testFile << "| " << *it << " |";
-	testFile << "\n\nnamespace::vector<int> test2(5, 84)\n";
-	for (NS::vector<int>::iterator it = test2.begin(); it != test2.end(); it++)
-       testFile << "| " << *it << " |";
+	test1.insert(NS::make_pair(2, 9));
+	test1.insert(NS::make_pair(4, 2));
+	test1.insert(NS::make_pair(1, 3));
+	test2.insert(NS::make_pair(2, 9));
+	test2.insert(NS::make_pair(9, 2));
+	test2.insert(NS::make_pair(8, 4));
+
+   	testFile << "Content of map<int, int> test1 (Keys)   : ";
+   	for (NS::map<int, int>::iterator it = test1.begin(); it != test1.end(); it++)
+       testFile << "| " << it->first << " |";
+
+   	testFile << "\nContent of map<int, int> test1 (Values) : ";
+   	for (NS::map<int, int>::iterator it = test1.begin(); it != test1.end(); it++)
+       testFile << "| " << it->second << " |";
+
+	testFile << "\n\n";
+
+	testFile << "Content of map<int, int> test2 (Keys)   : ";
+   	for (NS::map<int, int>::iterator it = test2.begin(); it != test2.end(); it++)
+       testFile << "| " << it->first << " |";
+
+   	testFile << "\nContent of map<int, int> test2 (Values) : ";
+   	for (NS::map<int, int>::iterator it = test2.begin(); it != test2.end(); it++)
+       testFile << "| " << it->second << " |";
+
 	testFile << "\n\n";
 	if (test1 == test2)
 		testFile << "test1 and test2 are equal.\n";

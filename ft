@@ -1,0 +1,4 @@
+Content of map<int, int> test1 (Keys)   : | 1 || 2 || 8 || 9 || 10 || 14 |
+Content of map<int, int> test1 (Values) : | 8 || 9 || 4 || 0 || 86 || 54 |
+Iterator Begin (Key)   : 1
+Iterator Begin (Value) : 8

@@ -6,18 +6,18 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:19:35 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/02 14:05:36 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 11:57:48 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include "../iterators/randomAccessIterator.hpp"
-#include "../iterators/reverseIterator.hpp"
-#include "../iterators/typeTraits.hpp"
+#include "../iterators/random_access_iterator.hpp"
+#include "../iterators/reverse_iterator.hpp"
+#include "../iterators/type_traits.hpp"
 #include "../utils/distance.hpp"
-#include "../utils/lexicographicalCompare.hpp"
+#include "../utils/lexicographical_compare.hpp"
 #include "../utils/equal.hpp"
 #include <memory>
 #include <limits>
@@ -39,11 +39,10 @@ namespace ft
       	typedef typename Alloc::const_pointer					const_pointer;
       	typedef typename Alloc::reference						reference;
       	typedef typename Alloc::const_reference					const_reference;
-      	typedef ft::randomAccessIterator<pointer, vector> 		iterator;
-      	typedef ft::randomAccessIterator<const_pointer, vector>
-			const_iterator;
-      	typedef ft::reverse_iterator<const_iterator>			
-			const_reverse_iterator;
+      	typedef ft::random_access_iterator<pointer, vector> 	iterator;
+      	typedef ft::random_access_iterator<const_pointer, vector>
+		  	const_iterator;
+      	typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
       	typedef ft::reverse_iterator<iterator>					reverse_iterator;
       	typedef size_t											size_type;
       	typedef std::ptrdiff_t									difference_type;
@@ -52,15 +51,15 @@ namespace ft
 		// Constructors / Destructor / Assignment operator 
 
 		explicit vector( const allocator_type & alloc = allocator_type() )
-			: _alloc(alloc), _start(0), _end(0), _endOfStorage(0)
+			: _alloc(alloc), _start(NULL), _end(NULL), _end_of_storage(NULL)
 		{
-				return ;
+			return ;
 		}
 
 		explicit vector( size_type n, const value_type & val = value_type(),
             const allocator_type & alloc = allocator_type() )
 			: _alloc(alloc), _start(_alloc.allocate(n)), _end(_start + n),
-				_endOfStorage(_end)
+				_end_of_storage(_end)
 		{
 			assign(n, val);
 		}
@@ -68,29 +67,29 @@ namespace ft
 		template <class InputIterator>
         vector( InputIterator first, InputIterator last,
             const allocator_type & alloc = allocator_type(),
-			typename ft::enableIf<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
 			InputIterator>::type* = NULL )
-			: _alloc(alloc), _start(0), _end(0), _endOfStorage(0)
+			: _alloc(alloc), _start(NULL), _end(NULL), _end_of_storage(NULL)
 		{
 			assign(first, last);
 		}
 		
-		vector( const self_type & src )
-			: _alloc(src.get_allocator()), _start(0), _end(0), _endOfStorage(0)
+		vector( const self_type & src ) : _alloc(src.get_allocator()),
+			_start(NULL), _end(NULL), _end_of_storage(NULL)
 		{
+			if (src._start == NULL)
+				return ;
 			*this = src;
 		}
 
 		~vector( void )
 		{
-			if (empty() == false)
-			{
-				_Destroy(_start, _end, _alloc);
+			clear();
+			if (capacity() != 0)
 				_alloc.deallocate(_start, capacity());
-			}
 		}
 
-		self_type &	operator=(const self_type & rhs)
+		self_type &	operator=( const self_type& rhs )
 		{
 			if (this != &rhs)
 			{
@@ -99,9 +98,9 @@ namespace ft
 				_start = _alloc.allocate(rhs.capacity());
 				_end = _start + rhs.size();
 				if (oldCapacity < rhs.size())
-					_endOfStorage = _start + rhs.size();
+					_end_of_storage = _start + rhs.size();
 				else
-					_endOfStorage = _start + oldCapacity;
+					_end_of_storage = _start + oldCapacity;
 				assign(rhs.begin(), rhs.end());
 			}
 			return *this;
@@ -159,8 +158,8 @@ namespace ft
 		size_type	max_size( void ) const
     	{
 			const size_type diffMax = size_type(-1) / sizeof(value_type);
-			const size_type allocMax = allocTraits::max_size(_alloc);
-
+			const size_type allocMax = alloc_traits::max_size(_alloc);
+			
 			return std::min(diffMax, allocMax);
 		}
 
@@ -189,7 +188,7 @@ namespace ft
 
 		size_type	capacity( void ) const
 		{
-			return _endOfStorage - _start;
+			return _end_of_storage - _start;
 		}
 
 		bool	empty( void ) const
@@ -211,11 +210,11 @@ namespace ft
 				_alloc.deallocate(_start, capacity());
 				_start = tmp;
 				_end = tmp + oldSize;
-				_endOfStorage = _start + n;
+				_end_of_storage = _start + n;
 			}
 		}
 
-		/// Element access
+		// Element access
 		
 		reference	operator[]( size_type n )
 		{
@@ -273,7 +272,7 @@ namespace ft
 
 		template <class InputIterator>
   		void	assign( InputIterator first, InputIterator last,
-			typename ft::enableIf<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
 			InputIterator>::type* = NULL )
 		{
 			clear();
@@ -288,7 +287,7 @@ namespace ft
 
 		void push_back( const value_type & val ) 
 		{
-			if (_end != _endOfStorage)
+			if (_end != _end_of_storage)
 			{
 				_alloc.construct(_end, val);
 				_end++;
@@ -313,7 +312,7 @@ namespace ft
 
 		iterator insert( iterator position, const value_type & val )
 		{
-			if (_end != _endOfStorage)
+			if (_end != _end_of_storage)
 			{
 				_alloc.construct(_end++, val);
 				for (iterator it = end() - 1; it != position; it--)
@@ -337,7 +336,7 @@ namespace ft
 
 		void insert( iterator position, size_type n, const value_type & val )
 		{
-			if (size_type(_endOfStorage - _end) >= n)
+			if (size_type(_end_of_storage - _end) >= n)
 			{
 				while (n--)
 					insert(position++, val);
@@ -356,11 +355,11 @@ namespace ft
 
 		template <typename InputIterator>
     	void insert(iterator position, InputIterator first, InputIterator last,
-			typename ft::enableIf<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
 			InputIterator>::type* = NULL)
 		{
 			size_type lenght = ft::distance(first, last);
-			if (size_type(_endOfStorage - _end) >= lenght)
+			if (size_type(_end_of_storage - _end) >= lenght)
 			{
 				while (first != last)
 					insert(position++, *first++);
@@ -395,16 +394,17 @@ namespace ft
 			return first;
 		}
 
-		void swap( vector & x)
+		void swap( vector & x )
 		{
 			std::swap(_start, x._start);
     		std::swap(_end, x._end);
-    		std::swap(_endOfStorage, x._endOfStorage);
+    		std::swap(_end_of_storage, x._end_of_storage);
 		}
 
 		void clear( void )
 		{
-			erase(begin(), end());
+			while (empty() == false)
+				pop_back();
 		}
 
 		// Allocator
@@ -416,14 +416,14 @@ namespace ft
 
 	private:
 
-		typedef __gnu_cxx::__alloc_traits<allocator_type>	allocTraits;
+		typedef __gnu_cxx::__alloc_traits<allocator_type>	alloc_traits;
 
 		allocator_type	_alloc;
 		pointer			_start;
 		pointer			_end;
-		pointer			_endOfStorage;
+		pointer			_end_of_storage;
 
-		void checkInitLenght( size_type n )
+		void _check_init_lenght( size_type n )
 		{
 			if (n > max_size())
 			 std::__throw_length_error(
@@ -448,7 +448,8 @@ namespace ft
 	}
 
 	template<typename T, typename Alloc>
-    bool	operator!=( const vector<T, Alloc> & x, const vector<T, Alloc> & y )
+    bool	operator!=( const vector<T, Alloc> & x,
+		const vector<T, Alloc> & y )
     {
 		return !(x == y);
 	}
@@ -460,13 +461,15 @@ namespace ft
 	}
 
 	template<typename T, typename Alloc>
-    bool	operator<=( const vector<T, Alloc> & x, const vector<T, Alloc> & y )
+    bool	operator<=( const vector<T, Alloc> & x,
+		const vector<T, Alloc> & y )
     {
 		return !(y < x);
 	}
 
 	template<typename T, typename Alloc>
-    bool	operator>=( const vector<T, Alloc> & x, const vector<T, Alloc> & y )
+    bool	operator>=( const vector<T, Alloc> & x,
+		const vector<T, Alloc> & y )
     {
 		return !(x < y);
 	}

@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 13:55:23 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/02 14:01:33 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/20 21:33:28 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 namespace ft
 {
-	template<class IIter1, class IIter2>
-	bool
-	equal(IIter1 first1, IIter1 last1, IIter2 first2)
+	template<class input_iterator_1, class input_iterator_2>
+	bool	equal( input_iterator_1 first1, input_iterator_1 last1,
+		input_iterator_2 first2 )
 	{
 		while (first1 != last1)
 		{
@@ -30,9 +30,9 @@ namespace ft
 		return true;
 	}
 
-	// Predicate
-	template<class IIter1, class IIter2, class BinaryPredicate>
-	bool	equal(IIter1 first1, IIter1 last1, IIter2 first2, BinaryPredicate p)
+	template<class input_iterator_1, class input_iterator_2, class binary_predicate>
+	bool	equal( input_iterator_1 first1, input_iterator_1 last1,
+		input_iterator_2 first2, binary_predicate p )
 	{
 		while (first1 != last1)
 		{
@@ -43,6 +43,6 @@ namespace ft
 		}
 		return true;
 	}
-}
+} // namespace ft
 
 #endif
