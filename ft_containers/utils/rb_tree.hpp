@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:37:19 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 12:11:27 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 12:33:08 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,10 +179,14 @@ namespace ft
 
 		mapped_type&	operator[]( const key_type& key )
 		{
-			iterator it = find(key);
-
-			if (it == end() || key_comp()(key, (*it).first))
-	  			it = insert(it, value_type(key, mapped_type()));
+			iterator it = _find(key, _root);
+			
+			if (it == end())
+			{
+				ft::pair<iterator, bool>	p;
+				p = insert(ft::make_pair(key, mapped_type()));
+				return p.first.get_node()->content.second;
+			}
 			return it.get_node()->content.second;
 		}
 
