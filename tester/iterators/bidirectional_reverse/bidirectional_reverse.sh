@@ -8,38 +8,41 @@ source $DIR/arithmetic.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/relational_operators.sh
 
-function RandomAccessReverseAll()
+function BidirectionalReverseAll()
 {
-	echo -e $BBlue "Tests Random Access Reverse Constructors" $Color_Off
+	echo -e $BBlue "Tests Bidirectional Reverse Constructors" $Color_Off
 	echo
-	RandomAccessReverseAllConstructors '0'
+	BidirectionalReverseAllConstructors '0'
 
-	echo -e $BBlue "Tests Random Access Reverse Element Access" $Color_Off
+	echo -e $BBlue "Tests Bidirectional Reverse Element Access" $Color_Off
 	echo
-	RandomAccessReverseAllElementAccess '0'
 	
-	echo -e $BBlue "Tests Random Access Reverse Arithmetic" $Color_Off
-	echo
-	RandomAccessReverseAllArithmetic '0'
-
-	echo -e $BBlue "Tests Random Access Reverse Relational Operators" $Color_Off
-	echo
-
-	echo -e $BWhite "Test Random Access Reverse Relational Operators" $Color_Off
-	$ft "22411"
-	$std "22411"
+	echo -e $BWhite "Test Element Access" $Color_Off
+	$ft "24211"
+	$std "24211"
 	CompareFiles
+	
+	echo -e $BBlue "Tests Bidirectional Reverse Arithmetic" $Color_Off
+	echo
+	BidirectionalReverseAllArithmetic '0'
 
+	echo -e $BBlue "Tests Bidirectional Reverse Relational Operators" $Color_Off
+	echo
+
+	echo -e $BWhite "Test Relational Operators" $Color_Off
+	$ft "24411"
+	$std "24411"
+	CompareFiles
 
 	if [[ $1 == '1' ]]
 	then
-		PrintRandomAccessReverseMenu
+		PrintBidirectionalReverseMenu
 	fi
 }
 
-function PrintRandomAccessReverseMenu()
+function PrintBidirectionalReverseMenu()
 {
-	echo -e $BPurple --- Random Access Reverse menu --- $Color_Off
+	echo -e $BPurple --- Bidirectional Reverse Menu--- $Color_Off
 	echo -e $BCyan 1 $BWhite - Constructors $Color_Off
 	echo -e $BCyan 2 $BWhite - Element access $Color_Off
 	echo -e $BCyan 3 $BWhite - Arithmetic $Color_Off
@@ -50,29 +53,29 @@ function PrintRandomAccessReverseMenu()
 	echo -ne $BBlue Enter your choice : $Color_Off
 }
 
-function RandomAccessReverseMenu()
+function BidirectionalReverseMenu()
 {
 	clear
-	PrintRandomAccessReverseMenu
+	PrintBidirectionalReverseMenu
 	input=""
 	while read input
 	do
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessReverseConstructorsMenu
+			BidirectionalReverseConstructorsMenu
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessReverseElementAccessMenu
+			BidirectionalReverseElementAccess "Test Element access"
 		elif [[ $input == "3" ]]
 		then
-			RandomAccessReverseArithmeticMenu
+			BidirectionalReverseArithmeticMenu
 		elif [[ $input == "4" ]]
 		then
-			RandomAccessReverseRelationalOperators
+			BidirectionalReverseRelationalOperators "Test Relational operators"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
-			RandomAccessReverseAll '1'
+			BidirectionalReverseAll '1'
 		elif [[ $input == "B" || $input == "b" ]]
 		then
 			IteratorsMenu
@@ -82,7 +85,7 @@ function RandomAccessReverseMenu()
 		else
 			echo -e $BRed Command not found! $Color_Off
 			echo
-			PrintRandomAccessReverseMenu
+			PrintBidirectionalReverseMenu
 		fi
 	done
 }

@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:21:46 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 11:49:02 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:36:43 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,30 @@ void    dispatch_iterators(char *argv)
     case '2':
         dispatch_random_access_reverse(argv);
         break;
-    //case '3':
-    //    dispatch_bidirectional(argv);
-    //    break;
-    //case '4':
-    //    dispatch_bidirectional_reverse(argv);
-    //    break;
+    case '3':
+        dispatch_bidirectional(argv);
+        break;
+    case '4':
+        dispatch_bidirectional_reverse(argv);
+        break;
     default:
         return;
     }
 }
 
-void    dispatch_others(char *argv)
-{
-    switch(argv[0])
-    default:
-        return;
-}
-
 // End Dispatch Tests
 
-void    dispatch_tests(char *argv)
+void    dispatch_tests(char **argv)
 {
-    switch(argv[0]) {
+    switch(argv[1][0]) {
     case '1':
-        dispatch_containers(argv);
+        dispatch_containers(argv[1]);
         break;
     case '2':
-        dispatch_iterators(argv);
+        dispatch_iterators(argv[1]);
          break;
     case '3':
-        dispatch_others(argv);
+        test_subject(argv[2]);
         break;
     default:
         return;
@@ -80,11 +73,10 @@ void    dispatch_tests(char *argv)
 
 int main( int argc, char *argv[] )
 {
-    test_subject(argc, argv);
     if (argc < 2 || argc > 3)
         return (1);
     else
-        dispatch_tests(argv[1]);
+        dispatch_tests(argv);
     return (0);
 }
 

@@ -6,18 +6,18 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 16:45:48 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/21 14:49:55 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 00:13:37 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-#include "../utils/less.hpp"
-#include "../utils/pair.hpp"
-#include "../utils/rb_tree.hpp"
+# include "../utils/less.hpp"
+# include "../utils/pair.hpp"
+# include "../utils/rb_tree.hpp"
 # include "../iterators/iterator_traits.hpp"
-#include <memory>
+# include <memory>
 
 namespace ft
 {
@@ -37,6 +37,7 @@ namespace ft
 		class value_compare
 			: public std::binary_function<value_type, value_type, bool>
 		{
+			
 		protected:
 			
 			Compare _comp;

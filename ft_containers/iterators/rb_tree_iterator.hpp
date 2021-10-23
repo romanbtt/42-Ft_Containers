@@ -1,5 +1,5 @@
 #ifndef RBTREEITERATOR_H
-# define RBTREEITERATOR_H
+#define RBTREEITERATOR_H
 
 # include "../iterators/iterator_traits.hpp"
 

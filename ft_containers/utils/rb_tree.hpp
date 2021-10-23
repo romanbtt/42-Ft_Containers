@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:37:19 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 12:33:08 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 00:16:06 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ namespace ft
 
 		explicit RBTree( const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type() )
-			: _root(NULL), _end(NULL), _alloc(alloc), _compare(comp), _size(0)
+			: _root(0), _end(0), _alloc(alloc), _compare(comp), _size(0)
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
@@ -82,7 +82,8 @@ namespace ft
 		RBTree( InputIterator first, InputIterator last,
 				key_compare const& comp = key_compare(),
 				allocator_type const& alloc = allocator_type() )
-				: _root(NULL), _end(NULL), _alloc(alloc), _compare(comp), _size(0)
+				: _root(0), _end(0), _alloc(alloc),
+				_compare(comp), _size(0)
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
@@ -92,7 +93,8 @@ namespace ft
 		}
 
 		RBTree( RBTree const &src )
-			: _root(NULL), _end(NULL), _alloc(src._alloc), _compare(src._compare), _size(0)
+			: _root(0), _end(0), _alloc(src._alloc),
+			_compare(src._compare), _size(0)
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
@@ -512,7 +514,7 @@ namespace ft
 
 		void	_eraseNode( pointer z )
 		{
-			pointer x = NULL;
+			pointer x = 0;
 			pointer y = z;
 			rbt_color_node y_orginal_color = y->color;
 

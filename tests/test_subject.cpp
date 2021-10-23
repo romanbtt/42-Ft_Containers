@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:45:34 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 12:08:33 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:20:57 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 #include <string>
 #include <deque>
-
 
 #include <stdlib.h>
 
@@ -49,15 +48,11 @@ public:
 	iterator end() { return this->c.end(); }
 };
 
-int test_subject(int argc, char** argv) {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: ./test seed" << std::endl;
-		std::cerr << "Provide a seed please" << std::endl;
-		std::cerr << "Count value:" << COUNT << std::endl;
-		return 1;
-	}
-	const int seed = atoi(argv[1]);
+void test_subject( char *argv )
+{
+    std::ofstream testFile(DIFF, std::ios::out | std::ios::trunc);
+
+	const int seed = atoi(argv);
 	srand(seed);
 
 	NS::vector<std::string> vector_str;
@@ -85,7 +80,7 @@ int test_subject(int argc, char** argv) {
 		{
 			const int idx = rand() % COUNT;
 			vector_buffer.at(idx);
-			std::cerr << "Error: THIS VECTOR SHOULD BE EMPTY!!" <<std::endl;
+			testFile << "Error: THIS VECTOR SHOULD BE EMPTY!!" <<std::endl;
 		}
 	}
 	catch(const std::exception& e)
@@ -104,7 +99,7 @@ int test_subject(int argc, char** argv) {
 		int access = rand();
 		sum += map_int[access];
 	}
-	std::cout << "should be constant with the same seed: " << sum << std::endl;
+	testFile << "should be constant with the same seed: " << sum << std::endl;
 
 	{
 		NS::map<int, int> copy = map_int;
@@ -114,8 +109,10 @@ int test_subject(int argc, char** argv) {
 		iterable_stack.push(letter);
 	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
 	{
-		std::cout << *it;
+		testFile << *it;
 	}
-	std::cout << std::endl;
-	return (0);
+	testFile << std::endl;
+	std::ifstream file(DIFF);
+    std::cout << file.rdbuf();
+    file.close();
 }

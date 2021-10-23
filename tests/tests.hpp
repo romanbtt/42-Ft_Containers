@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:57:06 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 11:50:04 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:27:56 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,38 @@ void    random_access_reverse_minus(char *argv);
 void    random_access_reverse_compound(char *argv);
 
 void    random_access_reverse_relational_operators(char *argv);
-int test_subject(int argc, char** argv);
+
+
+void    dispatch_bidirectional(char *argv);
+
+void    bidirectional_default_constructors(char *argv);
+void	bidirectional_copy_constructors(char *argv);
+void	bidirectional_operator_equal(char *argv);
+
+void	bidirectional_relational_operators(char *argv);
+
+void	bidirectional_decrement(char *argv);
+void	bidirectional_increment(char *argv);
+
+void	bidirectional_operator_star(char *argv);
+
+
+void    dispatch_bidirectional_reverse(char *argv);
+
+void    bidirectional_reverse_default_constructors(char *argv);
+void	bidirectional_reverse_copy_constructors(char *argv);
+void	bidirectional_reverse_operator_equal(char *argv);
+
+void	bidirectional_reverse_relational_operators(char *argv);
+
+void	bidirectional_reverse_decrement(char *argv);
+void	bidirectional_reverse_increment(char *argv);
+
+void	bidirectional_reverse_operator_star(char *argv);
+
+
+void 	test_subject(char *argv);
+
 
 
 

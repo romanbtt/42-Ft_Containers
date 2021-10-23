@@ -6,14 +6,14 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:42:50 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/20 21:33:31 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 00:14:26 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DISTANCE_H
 #define DISTANCE_H
 
-#include "../iterators/iterator_traits.hpp"
+# include "../iterators/iterator_traits.hpp"
 
 namespace ft
 {

@@ -3,6 +3,10 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/random_access/random_access.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/random_access_reverse/random_access_reverse.sh
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/bidirectional/bidirectional.sh
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/bidirectional_reverse/bidirectional_reverse.sh
 
 function PrintIteratorsMenu()
 {
@@ -15,6 +19,18 @@ function PrintIteratorsMenu()
 	echo -e $BYellow B $BWhite - Back $Color_Off
 	echo -e $BRed E $BWhite - Exit $Color_Off
 	echo -ne $BBlue Enter your choice : $Color_Off
+}
+
+function IteratorsAll()
+{
+	RandomAccessAll '0'
+	RandomAccessReverseAll '0'
+	BidirectionalReverseAll '0'
+
+	if [[ $1 == '1' ]]
+	then
+		PrintIteratorsMenu
+	fi
 }
 
 function IteratorsMenu()
@@ -39,7 +55,7 @@ function IteratorsMenu()
 			BidirectionalReverseMenu
 		elif [[ $input == "A" || $input == "a" ]]
 		then
-			RandomAccessMenu
+			IteratorsAll '1'
 		elif [[ $input == "B" || $input == "b" ]]
 		then
 			MainMenu

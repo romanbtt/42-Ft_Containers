@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RANDOM_ACCESS_iTERATOR_HPP
-#define RANDOM_ACCESS_iTERATOR_HPP
+#ifndef RANDOM_ACCESS_iTERATOR_H
+#define RANDOM_ACCESS_iTERATOR_H
 
-#include "iterator_traits.hpp"
-#include "type_traits.hpp"
+# include "iterator_traits.hpp"
+# include "type_traits.hpp"
 
 namespace ft
 {

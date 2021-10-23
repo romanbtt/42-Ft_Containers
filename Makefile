@@ -34,7 +34,15 @@ SRC_FILES =		${SRC_DIR}/main.cpp \
 				${SRC_DIR}/iterators/random_access_reverse/constructors/rar_constructors.cpp \
 				${SRC_DIR}/iterators/random_access_reverse/element_access/rar_element_access.cpp \
 				${SRC_DIR}/iterators/random_access_reverse/arithmetic_operators/rar_arithmetic.cpp \
-				${SRC_DIR}/iterators/random_access_reverse/relational_operators/relationalOperators.cpp
+				${SRC_DIR}/iterators/random_access_reverse/relational_operators/relationalOperators.cpp \
+				${SRC_DIR}/iterators/bidirectional/constructors/b_constructors.cpp \
+				${SRC_DIR}/iterators/bidirectional/relational_operators/relationalOperators.cpp \
+				${SRC_DIR}/iterators/bidirectional/arithmetic_operators/b_arithmetic.cpp \
+				${SRC_DIR}/iterators/bidirectional/element_access/b_element_access.cpp \
+				${SRC_DIR}/iterators/bidirectional_reverse/constructors/br_constructors.cpp \
+				${SRC_DIR}/iterators/bidirectional_reverse/relational_operators/relationalOperators.cpp \
+				${SRC_DIR}/iterators/bidirectional_reverse/arithmetic_operators/br_arithmetic.cpp \
+				${SRC_DIR}/iterators/bidirectional_reverse/element_access/br_element_access.cpp 
 
 
 

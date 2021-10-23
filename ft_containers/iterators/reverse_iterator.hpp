@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef reverse_iterator_HPP
-#define reverse_iterator_HPP
+#ifndef reverse_iterator_H
+#define reverse_iterator_H
 
-#include "iterator_traits.hpp"
-#include "type_traits.hpp"
+# include "iterator_traits.hpp"
+# include "type_traits.hpp"
 
 namespace ft
 {

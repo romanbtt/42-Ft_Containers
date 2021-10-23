@@ -6,14 +6,14 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:08:40 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/20 21:33:37 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 00:14:17 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPETRAITS_H
 #define TYPETRAITS_H
 
-#include <bits/c++config.h>
+# include <bits/c++config.h>
 
 namespace ft
 {

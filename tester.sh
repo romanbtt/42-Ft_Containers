@@ -6,6 +6,23 @@ source $DIR/tester/containers/containers.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/tester/iterators/iterators.sh
 
+function TestSubject()
+{
+	echo -e $BWhite $1 $Color_Off
+	echo
+
+	echo -n "Please, enter a seed value : "
+	read input
+
+	echo -e $BBlue "Namespace FT" $Color_Off
+	time $ft $2 $input
+	echo
+	echo -e $BBlue "Namespace STD" $Color_Off
+	time $std $2 $input
+	CompareFiles
+	PrintMainMenu
+}
+
 function CompareFiles()
 {
 	echo
@@ -24,10 +41,17 @@ function PrintMainMenu()
 	echo -e $BPurple --- Main menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Containers $Color_Off
 	echo -e $BCyan 2 $BWhite - Iterators $Color_Off
-	echo -e $BCyan 3 $BWhite - Others $Color_Off
+	echo -e $BCyan 3 $BWhite - Tests Subject $Color_Off
 	echo -e $BGreen A $BWhite - All $Color_Off
 	echo -e $BRed E $BWhite - Exit $Color_Off
 	echo -ne $BBlue Enter your choice : $Color_Off
+}
+
+function All()
+{
+	ContainersAll '0'
+	IteratorsAll '0'
+	TestSubject "Test Subject" "3"
 }
 
 function MainMenu()
@@ -44,10 +68,10 @@ function MainMenu()
 			IteratorsMenu
 		elif [[ $input == "3" ]]
 		then
-			ContainersMenu
+			TestSubject "Test Subject" "3"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
-			ContainersMenu
+			All
 		elif [[ $input == "E" || $input == "e" ]]
 		then
 			exit

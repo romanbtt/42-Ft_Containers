@@ -33,7 +33,7 @@ function RandomAccessAll()
 
 	if [[ $1 == '1' ]]
 	then
-		PrintVectorMenu
+		PrintRandomAccessMenu
 	fi
 }
 

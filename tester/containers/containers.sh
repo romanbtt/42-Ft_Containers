@@ -18,6 +18,18 @@ function PrintContainersMenu()
 	echo -ne $BBlue Enter your choice : $Color_Off
 }
 
+function ContainersAll()
+{
+	VectorAll '0'
+	MapAll '0'
+	StackAll '0'
+
+	if [[ $1 == '1' ]]
+	then
+		PrintContainersMenu
+	fi
+}
+
 function ContainersMenu()
 {
 	clear
@@ -37,7 +49,7 @@ function ContainersMenu()
 			StackMenu
 		elif [[ $input == "A" || $input == "a" ]]
 		then
-			VectorMenu
+			ContainersAll '1'
 		elif [[ $input == "B" || $input == "b" ]]
 		then
 			MainMenu

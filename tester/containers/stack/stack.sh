@@ -22,32 +22,32 @@ function StackAll()
 	$std "13101"
 	CompareFiles
 
-	echo -e $BBlue "Tests Map Empty" $Color_Off
+	echo -e $BBlue "Tests Stack Empty" $Color_Off
 	$ft "13201"
 	$std "13201"
 	CompareFiles
 	
-	echo -e $BBlue "Tests Map Size" $Color_Off
+	echo -e $BBlue "Tests Stack Size" $Color_Off
 	$ft "13301"
 	$std "13301"
 	CompareFiles
 
-	echo -e $BBlue "Tests Map Top" $Color_Off
+	echo -e $BBlue "Tests Stack Top" $Color_Off
 	$ft "13401"
 	$std "13401"
 	CompareFiles
 
-	echo -e $BBlue "Tests Map Push" $Color_Off
+	echo -e $BBlue "Tests Stack Push" $Color_Off
 	$ft "13501"
 	$std "13501"
 	CompareFiles
 
-	echo -e $BBlue "Tests Map Pop" $Color_Off
+	echo -e $BBlue "Tests Stack Pop" $Color_Off
 	$ft "13601"
 	$std "13601"
 	CompareFiles
 
-	echo -e $BBlue "Tests Map Relational operators" $Color_Off
+	echo -e $BBlue "Tests Stack Relational operators" $Color_Off
 	$ft "13701"
 	$std "13701"
 	CompareFiles
