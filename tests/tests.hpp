@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:57:06 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 16:27:56 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:17:05 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@
 #  define DIFF "std"
 #  undef ISSTD
 # endif
+
+
+/*
+** Tests Vector
+*/
 
 void    dispatch_vector(char *argv);
 
@@ -78,7 +83,9 @@ void	vector_get_allocator(char *argv);
 
 void	vector_relational_operators(char *argv);
 
-
+/*
+** Tests Map
+*/
 
 void    dispatch_map(char *argv);
 
@@ -116,7 +123,9 @@ void	map_get_allocator(char *argv);
 
 void	map_relational_operators(char *argv);
 
-
+/*
+** Tests Stack
+*/
 
 void    dispatch_stack(char *argv);
 
@@ -128,7 +137,9 @@ void	stack_push(char *argv);
 void	stack_pop(char *argv);
 void	stack_relational_operators(char *argv);
 
-
+/*
+** Tests Iterator Random access
+*/
 
 void    dispatch_random_access(char *argv);
 
@@ -147,6 +158,9 @@ void    random_access_compound(char *argv);
 
 void    random_access_relational_operators(char *argv);
 
+/*
+** Tests Iterator Random access reverse
+*/
 
 void    dispatch_random_access_reverse(char *argv);
 
@@ -165,6 +179,9 @@ void    random_access_reverse_compound(char *argv);
 
 void    random_access_reverse_relational_operators(char *argv);
 
+/*
+** Tests Iterator Bidirectional
+*/
 
 void    dispatch_bidirectional(char *argv);
 
@@ -179,6 +196,9 @@ void	bidirectional_increment(char *argv);
 
 void	bidirectional_operator_star(char *argv);
 
+/*
+** Tests Iterator Bidirectional reverse
+*/
 
 void    dispatch_bidirectional_reverse(char *argv);
 
@@ -193,10 +213,10 @@ void	bidirectional_reverse_increment(char *argv);
 
 void	bidirectional_reverse_operator_star(char *argv);
 
+/*
+** Tests Subject
+*/
 
 void 	test_subject(char *argv);
-
-
-
 
 #endif

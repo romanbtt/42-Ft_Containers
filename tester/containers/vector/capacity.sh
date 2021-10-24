@@ -49,7 +49,7 @@ function VectorAllCapacity()
 
 function PrintVectorCapacityMenu()
 {
-	echo -e $BPurple --- Vector Iterators menu --- $Color_Off
+	echo -e $BPurple --- Vector Capacity menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Size $Color_Off
 	echo -e $BCyan 2 $BWhite - Max Size $Color_Off
 	echo -e $BCyan 3 $BWhite - Resize $Color_Off

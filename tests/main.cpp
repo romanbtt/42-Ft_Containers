@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:21:46 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 16:36:43 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/24 00:06:52 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void    dispatch_iterators(char *argv)
     }
 }
 
-// End Dispatch Tests
-
 void    dispatch_tests(char **argv)
 {
     switch(argv[1][0]) {
@@ -73,10 +71,11 @@ void    dispatch_tests(char **argv)
 
 int main( int argc, char *argv[] )
 {
+    std::vector<int>::iterator it;
+    std::map<int,int>::iterator it1;
     if (argc < 2 || argc > 3)
         return (1);
     else
         dispatch_tests(argv);
     return (0);
 }
-

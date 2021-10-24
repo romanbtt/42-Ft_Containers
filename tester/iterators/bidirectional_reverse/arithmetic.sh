@@ -33,7 +33,7 @@ function BidirectionalReverseAllArithmetic()
 
 function PrintBidirectionalReverseArithmeticMenu()
 {
-	echo -e $BPurple --- Bidirectional Reverse Constructor menu --- $Color_Off
+	echo -e $BPurple --- Bidirectional Reverse Arithmetic menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Incrementation $Color_Off
 	echo -e $BCyan 2 $BWhite - Decremention $Color_Off
 	echo -e $BGreen A $BWhite - All $Color_Off

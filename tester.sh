@@ -84,10 +84,9 @@ function MainMenu()
 }
 
 clear
-
 make
-
 clear
+
 echo -e $BBlue Ft_Containers tester by rbitett. $Color_Off
 echo
 

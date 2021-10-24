@@ -6,11 +6,15 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:21:46 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/22 16:29:17 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:20:50 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
+
+/*
+** Dispatch Random Access
+*/
 
 static void    dispatch_random_access_constructors(char *argv)
 {
@@ -97,6 +101,10 @@ void    dispatch_random_access(char *argv)
     }
 }
 
+/*
+** Dispatch Random Access Reverse
+*/
+
 static void    dispatch_random_access_reverse_constructors(char *argv)
 {
     switch(argv[3]) {
@@ -182,6 +190,10 @@ void    dispatch_random_access_reverse(char *argv)
     }
 }
 
+/*
+** Dispatch Bidirectional
+*/
+
 static void    dispatch_bidirectional_constructors(char *argv)
 {
     switch(argv[3]) {
@@ -254,6 +266,10 @@ void    dispatch_bidirectional(char *argv)
         return;
     }
 }
+
+/*
+** Dispatch Bidirectional Reverse
+*/
 
 static void    dispatch_bidirectional_reverse_constructors(char *argv)
 {

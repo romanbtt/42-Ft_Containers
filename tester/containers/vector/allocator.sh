@@ -4,7 +4,7 @@ source $DIR/../../definition.sh
 
 function VectorGetAllocator()
 {
-	echo -e $BWhite $1 $Color_Off
+	echo -e $BWhite "Test Get allocator" $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
 	time $ft "11610"

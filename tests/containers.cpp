@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 14:51:15 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/20 15:30:57 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:21:23 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,6 @@ static void    dispatch_map_relational_operators(char *argv)
     }
 }
 
-// End Dispatch Map
-
 // Dispatch Vector
 
 static void    dispatch_vector_constructors(char *argv)
@@ -306,8 +304,6 @@ static void    dispatch_vector_relational_operators(char *argv)
     }
 }
 
-// End Dispatch Vector
-
 // Dispatch Containers
 
 void    dispatch_vector(char *argv)
@@ -400,5 +396,3 @@ void    dispatch_stack(char *argv)
         break;
     }
 }
-
-// End Dispatch Containers

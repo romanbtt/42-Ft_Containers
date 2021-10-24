@@ -4,7 +4,7 @@ source $DIR/../../definition.sh
 
 function BidirectionalElementAccess()
 {
-	echo -e $BWhite $1 $Color_Off
+	echo -e $BWhite "Tests Element Access" $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
 	time $ft "23210"

@@ -25,7 +25,7 @@ function RandomAccessAll()
 	echo -e $BBlue "Tests Random Access Relational Operators" $Color_Off
 	echo
 
-	echo -e $BWhite "Test Relational Operators" $Color_Off
+	echo -e $BWhite "Tests Relational Operators" $Color_Off
 	$ft "21411"
 	$std "21411"
 	CompareFiles

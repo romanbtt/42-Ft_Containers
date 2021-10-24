@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:19:35 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/23 00:13:26 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 23:35:25 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ namespace ft
 		template <class InputIterator>
         vector( InputIterator first, InputIterator last,
             const allocator_type & alloc = allocator_type(),
-			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 			InputIterator>::type* = NULL )
 			: _alloc(alloc), _start(NULL), _end(NULL), _end_of_storage(NULL)
 		{
@@ -402,7 +402,7 @@ namespace ft
 
 		template <class InputIterator>
   		void	assign( InputIterator first, InputIterator last,
-			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 			InputIterator>::type* = NULL )
 		{
 			clear();
@@ -523,7 +523,7 @@ namespace ft
 
 		template <typename InputIterator>
     	void insert(iterator position, InputIterator first, InputIterator last,
-			typename ft::enable_if<!ft::isIntegral<InputIterator>::value,
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 			InputIterator>::type* = NULL)
 		{
 			size_type lenght = ft::distance(first, last);
@@ -667,17 +667,17 @@ namespace ft
 		return !(x < y);
 	}
 
-	template<typename T, typename Alloc>
-    void	swap( vector<T, Alloc> & x, vector<T, Alloc> & y )
-    {
-		y.swap(x);
-	}
-
 	/*
 	** The contents of container x are exchanged with those of y.
 	** Both container objects must be of the same type,
 	** although sizes may differ.
 	*/
+
+	template<typename T, typename Alloc>
+    void	swap( vector<T, Alloc> & x, vector<T, Alloc> & y )
+    {
+		y.swap(x);
+	}
 
 } // namespace ft
 

@@ -6,7 +6,7 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:08:40 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/23 00:14:17 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:48:53 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,24 @@
 namespace ft
 {
 
-	template<bool, typename T = void>
+	/*
+	** The type T is enabled as member type enable_if::type if Cond is true.
+	* Otherwise, enable_if::type is not defined.
+	*/
+
+	template<bool Cond, typename T = void>
 	struct enable_if
-	{ };
+	{ }; // struct enable_if
 
 	template<typename T>
 	struct enable_if<true, T>
 	{
 		typedef T type;
-	};
+	}; // struct enable_if
+
+	/*
+	** This template is designed to provide compile-time constants as types.
+	*/
 
 	template<typename T, T v>
 	struct integral_constant
@@ -39,7 +48,7 @@ namespace ft
 		{
 			return value;
 		}
-	};
+	}; // struct integral_constant
 
 	typedef integral_constant<bool, true>	true_type;
 
@@ -88,8 +97,12 @@ namespace ft
 	template<>
 	struct is_integral_helper<unsigned long> : public true_type { };
 
+	/*
+	** Trait class that identifies whether T is an integral type.
+	*/
+
 	template<typename T>
-	struct isIntegral : public is_integral_helper<T> { };
+	struct is_integral : public is_integral_helper<T> { };
 
 	template<typename, typename>
     struct is_same : public false_type { };

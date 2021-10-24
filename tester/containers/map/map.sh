@@ -57,7 +57,7 @@ function MapAll()
 	$std "12811"
 	CompareFiles
 
-	echo -e $BBlue "Tests Relational Operators" $Color_Off
+	echo -e $BBlue "Tests Map Relational Operators" $Color_Off
 	echo
 
 	echo -e $BWhite "Test Relational Operators" $Color_Off

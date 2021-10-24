@@ -4,7 +4,7 @@ source $DIR/../../definition.sh
 
 function BidirectionalRelationalOperators()
 {
-	echo -e $BWhite $1 $Color_Off
+	echo -e $BWhite "Tests Relational Operators" $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
 	time $ft "23410"

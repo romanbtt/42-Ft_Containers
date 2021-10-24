@@ -37,7 +37,7 @@ function MapAllCapacity()
 
 function PrintMapCapacityMenu()
 {
-	echo -e $BPurple --- Map Iterators menu --- $Color_Off
+	echo -e $BPurple --- Map Capacity menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Empty $Color_Off
 	echo -e $BCyan 2 $BWhite - Size $Color_Off
 	echo -e $BCyan 3 $BWhite - Max Size $Color_Off

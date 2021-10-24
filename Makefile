@@ -2,7 +2,7 @@ NAME =        ft-containers
 NAME_STD =    std-containers
 
 CXX =        clang++
-CXXFLAGS =    -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS =    -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR = ./tests
 
@@ -44,9 +44,6 @@ SRC_FILES =		${SRC_DIR}/main.cpp \
 				${SRC_DIR}/iterators/bidirectional_reverse/arithmetic_operators/br_arithmetic.cpp \
 				${SRC_DIR}/iterators/bidirectional_reverse/element_access/br_element_access.cpp 
 
-
-
-
 SRCS = $(SRC_FILES)
 OBJ_DIR = ./build
 OBJ_DIR_FT = ${OBJ_DIR}/ft_containers
@@ -81,7 +78,7 @@ clean:
 	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m object files of $(NAME_STD)\n"
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) ft std
 	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m $(NAME)\n"
 	@$(RM) $(NAME_STD)
 	@echo "\033[1;32m[OK]\033[0m    \033[1;33mDeleting \033[0m $(NAME_STD)\n"

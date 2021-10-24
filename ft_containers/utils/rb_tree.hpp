@@ -6,18 +6,17 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:37:19 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/23 00:16:06 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:14:42 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RBTREE_H
-#define RBTREE_H
+# define RBTREE_H
 
 # include <memory>
 # include "less.hpp"
 # include "pair.hpp"
 # include "../iterators/rb_tree_iterator.hpp"
-
 
 namespace ft
 {
@@ -31,7 +30,7 @@ namespace ft
 	template<typename Key, typename T>
 	struct rbt_node
 	{
-		typedef ft::pair<Key, T>						value_type;
+		typedef ft::pair<Key, T>	value_type;
 
 		value_type		content;
 		rbt_node*		parent;
@@ -43,7 +42,7 @@ namespace ft
 		{
 			return ;
 		}
-	};
+	}; // struct rbt_node
 
 	template<typename Key, typename T, typename Compare = ft::less<Key>,
 		typename Alloc = std::allocator<ft::pair<const Key, T> > >
@@ -68,6 +67,10 @@ namespace ft
 			<rbt_node<key_type, mapped_type> >::other	allocator_type;
 		typedef size_t									size_type;
 
+		/*
+		** Constructs an empty redblack tree, with no elements.
+		*/
+
 		explicit RBTree( const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type() )
 			: _root(0), _end(0), _alloc(alloc), _compare(comp), _size(0)
@@ -77,6 +80,11 @@ namespace ft
 			_end->color = BLACK;
 			_root = _end;
 		}
+
+		/*
+		** Constructs a redblack tree with as many elements as the range [first,last),
+		** with each element constructed from its corresponding element in that range.
+		*/
 
 		template<typename InputIterator>
 		RBTree( InputIterator first, InputIterator last,
@@ -92,7 +100,11 @@ namespace ft
 			insert(first, last);
 		}
 
-		RBTree( RBTree const &src )
+		/*
+		** Constructs a redblack tree with a copy of each of the elements in src.
+		*/
+
+		RBTree( const RBTree& src )
 			: _root(0), _end(0), _alloc(src._alloc),
 			_compare(src._compare), _size(0)
 		{
@@ -103,12 +115,20 @@ namespace ft
 			*this = src;
 		}
 
+		/*
+		** Destroys the tree object.
+		*/
+
 		virtual	~RBTree( void )
 		{
 			clear();
 			_alloc.destroy(_end);
 			_alloc.deallocate(_end, 1);
-		};
+		}
+
+		/*
+		** Assigns new contents to the tree, replacing its current content.
+		*/
 
 		RBTree&	operator=( RBTree const &rhs )
 		{
@@ -122,45 +142,89 @@ namespace ft
 			return *this;
 		}
 
+		/*
+		** Returns an iterator referring to the first element
+		** in the tree. (miniumum value)
+		*/
+
 		iterator	begin( void)
 		{
 			return (iterator(_minimum(_root), _root, _end));
 		}
 
+		/*
+		** Returns a const iterator referring to the first element
+		** in the tree. (miniumum value)
+		*/
+
 		const_iterator	begin( void ) const
 		{
 			return (const_iterator(_minimum(_root), _root, _end));
-		};
+		}
+
+		/*
+		** Returns an iterator referring to the past-the-end element
+		** in the map container.
+		*/
 		
 		iterator	end( void )
 		{
 			return (iterator(_end, _root, _end));
 		}
 
+		/*
+		** Returns a const iterator referring to the past-the-end element
+		** in the map container.
+		*/
+
 		const_iterator	end( void ) const
 		{
 			return (const_iterator(_end, _root, _end));
-		};
+		}
+
+		/*
+		** Returns a reverse iterator pointing to the last element
+		** in the container.
+		*/
 
 		reverse_iterator	rbegin( void )
 		{
 			return (reverse_iterator(end()));
 		}
 
+		/*
+		** Returns a const reverse iterator pointing to the last element
+		** in the container.
+		*/
+
 		const_reverse_iterator	rbegin() const
 		{
 			return (const_reverse_iterator(end()));
-		};
+		}
+
+		/*
+		** Returns a reverse iterator pointing to the theoretical element
+		** right before the first element in the map container.
+		*/
 
 		reverse_iterator	rend( void )
 		{
 			return (reverse_iterator(begin()));
 		}
 
+		/*
+		** Returns a const reverse iterator pointing to the theoretical element
+		** right before the first element in the map container.
+		*/
+
 		const_reverse_iterator	rend( void ) const
 		{
 			return (const_reverse_iterator(begin()));
-		};
+		}
+
+		/*
+		** Returns whether the map container is empty.
+		*/
 
 		bool	empty( void ) const
 		{
@@ -169,15 +233,33 @@ namespace ft
 			return false;
 		}
 
+		/*
+		** Returns the number of elements in the map container.
+		*/
+
 		size_type	size( void ) const
 		{
 			return _size;
 		}
 
+		/*
+		** Returns the maximum number of elements
+		** that the map container can hold.
+		*/
+
+
 		size_type	max_size( void ) const
 		{
 			return _alloc.max_size();
 		}
+
+		/*
+		** If key matches the key of an element in the container,
+		** the function returns a reference to its mapped value.
+		** If key does not match the key of any element in the container,
+		** the function inserts a new element with that key and returns
+		** a reference to its mapped value.
+		*/
 
 		mapped_type&	operator[]( const key_type& key )
 		{
@@ -192,6 +274,11 @@ namespace ft
 			return it.get_node()->content.second;
 		}
 
+		/*
+		** Extends the container by inserting one single element, 
+		** effectively increasing the container size by one.
+		*/
+
 		ft::pair<iterator, bool>	insert( const value_type& val )
       	{
 			iterator it = find(val.first);
@@ -205,6 +292,13 @@ namespace ft
 			_size++;
 			return ft::make_pair(it, true);		
 		}
+
+		/*
+		** Extends the container by inserting one single element at a given
+		** position, effectively increasing the container size by one.
+		** Position is an hint for the position where
+		** the element can be inserted.
+		*/
 
 		iterator	insert( iterator position, const value_type& val )
       	{
@@ -223,12 +317,24 @@ namespace ft
 				return insert(val).first;
 		}
 
+		/*
+		** Extends the container by inserting new elements,
+		** effectively increasing the container size by
+		** the number of elements inserted.
+		*/
+
 		template<typename InputIterator>
 		void	insert( InputIterator first, InputIterator last )
 		{
 			while (first != last)
 				insert(*first++);
 		}
+
+		/*
+		** Removes from the map container a single element at a given position.
+		** This effectively reduces the container size by the number
+		** of elements removed, which are destroyed.
+		*/
 
 		void	erase( iterator position )
 		{
@@ -237,6 +343,13 @@ namespace ft
 			_eraseNode(position.get_node());
 			_size--;
 		}
+
+		/*
+		** Removes from the map container a single element
+		** whose match with a given key.
+		** This effectively reduces the container size by the number
+		** of elements removed, which are destroyed.
+		*/
 
 		size_type	erase( const key_type& key )
 		{
@@ -247,11 +360,22 @@ namespace ft
 			return (1);
 		}
 
+		/*
+		** Removes from the map container a range of elements.
+		** This effectively reduces the container size by the number
+		** of elements removed, which are destroyed.
+		*/
+
 		void	erase( iterator first, iterator last )
 		{
 			while (first != last)
 				erase(first++);
 		}
+
+		/*
+		** Removes all elements from the map container (which are destroyed),
+		** leaving the container with a size of 0.
+		*/
 
 		void	clear( void )
 		{
@@ -259,10 +383,21 @@ namespace ft
 			_root = _end;
 		}
 
+		/*
+		** Returns a copy of the comparison object used
+		** by the container to compare keys.
+		*/
+
 		key_compare	key_comp( void ) const
 		{
 			return key_compare();
 		}
+
+		/*
+		** Searches the container for an element with a key equivalent to k
+		** and returns an iterator to it if found,
+		** otherwise it returns an iterator to map::end.
+		*/
 
 		iterator	find( const key_type& key )
 		{
@@ -271,6 +406,12 @@ namespace ft
 			return it;
 		}
 
+		/*
+		** Searches the container for an element with a key equivalent to k
+		** and returns a constiterator to it if found,
+		** otherwise it returns an iterator to map::end.
+		*/
+
 		const_iterator	find( const key_type& key ) const
 		{
 			const_iterator it = _find(key, _root);
@@ -278,12 +419,23 @@ namespace ft
 			return it;
 		}
 
+		/*
+		** Searches the container for elements with a key equivalent to k
+		** and returns the number of matches.
+		** 0 or 1 in the case of map.
+		*/
+
 		size_type	count( const key_type& key ) const
 		{
 			if (find(key) != end())
 				return (1);
 			return (0);
 		}
+
+		/*
+		** Returns an iterator pointing to the first element
+		** in the container whose key is not considered to go before key.
+		*/
 
 		iterator	lower_bound( const key_type& key )
 		{
@@ -295,6 +447,11 @@ namespace ft
 			return (end());
 		}
 
+		/*
+		** Returns a const iterator pointing to the first element
+		** in the container whose key is not considered to go before key.
+		*/
+
 		const_iterator	lower_bound( const key_type& key ) const
 		{
 			for (const_iterator it = begin(); it != end(); it++)
@@ -304,6 +461,11 @@ namespace ft
 			}
 			return (end());
 		}
+
+		/*
+		** Returns an iterator pointing to the first element
+		** in the container whose key is considered to go after key.
+		*/
 
 		iterator	upper_bound( const key_type& key )
 		{
@@ -315,6 +477,11 @@ namespace ft
 			return (end());
 		}
 
+		/*
+		** Returns a const iterator pointing to the first element
+		** in the container whose key is considered to go after key.
+		*/
+
 		const_iterator	upper_bound( const key_type& key ) const
 		{
 			for (const_iterator it = begin(); it != end(); it++)
@@ -325,11 +492,21 @@ namespace ft
 			return (end());
 		}
 
+		/*
+		** Returns the bounds of a rang of iterators that includes all
+		** the elements in the container which have a key equivalent to key.
+		*/
+
 		ft::pair<iterator,iterator>	equal_range( const key_type& key )
 		{
 			return ft::pair<iterator, iterator>(lower_bound(key),
 				upper_bound(key));
 		}
+
+		/*
+		** Returns the bounds of a rang of const iterators that includes all
+		** the elements in the container which have a key equivalent to key.
+		*/
 
 		ft::pair<const_iterator, const_iterator>
 			equal_range( const key_type& key ) const
@@ -337,6 +514,10 @@ namespace ft
 			return ft::pair<const_iterator, const_iterator>(lower_bound(key),
 				upper_bound(key));
 		}
+
+		/*
+		** Returns a copy of the allocator object associated with the map.
+		*/
 
 		Alloc	get_allocator( void ) const
 		{
@@ -350,6 +531,13 @@ namespace ft
 		allocator_type	_alloc;
 		key_compare		_compare;
 		size_type		_size;
+
+		/*
+		** Inserts a new node at the right position in a leaf starting from
+		** the pointer "from".
+		** Then call insertFixUp in order to recolor and/or rotate nodes
+		** to guarantee that the red-black properties are preserved.
+		*/
 
 		pointer	_insertNode( pointer new_node, pointer from )
 		{
@@ -377,6 +565,31 @@ namespace ft
 			_insertFixUp(new_node);
 			return (new_node);
 		}
+
+		/*
+		** If the parent of the new node inserted is black, we're all set.
+		** Else and until, node'sp parent is red :
+		** We need to know if node's parent is at the left or the right 
+		** to node's grandparent.
+		**
+		** CASE 1 : node's parent is a left leaf.
+		** 3 cases are possible : 
+		** 	Case 1, node's uncle is red :
+		** 		Recolor and and check with node = node's grandparent.
+		** 	Case 2, node is a right leaf :
+		**		Execute a left rotation, recolor and right rotation.
+		** 	Case 3, node is a left leaf :
+		**		Recolor and execute a right rotation.
+		**
+		** CASE 2 :node's parent is a right leaf.
+		** 3 cases are possible : 
+		** 	Case 1, node's uncle is red :
+		** 		Recolor and and check with node = node's grandparent.
+		** 	Case 2, node is a left leaf :
+		**		Execute a right rotation, recolor and left rotation.
+		** 	Case 3, node is a right leaf :
+		**		Recolor and execute a left rotation.
+		*/
 
 		void	_insertFixUp( pointer node )
 		{
@@ -408,7 +621,6 @@ namespace ft
 						node->parent->parent->color = RED;
 						_right_rotate(node->parent->parent);
 					}
-
 				}
 				else
 				{
@@ -438,42 +650,69 @@ namespace ft
 			}
 			_root->color = BLACK;
 		}
+
+		/*
+		** Rotate to the left making Y the new parent of X.
+		** 
+		**		 |		<-----------      |
+		**      (Y)	    left rotate	     (X)
+		**	    /\                       /\
+		**    (X) c                     a (Y) 
+		**    /\        right rotate       /\
+		**   a  b       ----------->      b  c
+		*/
+
 		
-		void	_left_rotate( pointer node )
+		void	_left_rotate( pointer x )
 		{
-			pointer new_parent = node->right;
+			pointer y = x->right;
 
-			node->right = new_parent->left;
-			if (new_parent->left != _end)
-				new_parent->left->parent = node;
-			new_parent->parent = node->parent;
-			if (node->parent == _end)
-				_root = new_parent;
-			else if (node == node->parent->left)
-				node->parent->left = new_parent;
+			x->right = y->left;
+			if (y->left != _end)
+				y->left->parent = x;
+			y->parent = x->parent;
+			if (x->parent == _end)
+				_root = y;
+			else if (x == x->parent->left)
+				x->parent->left = y;
 			else
-				node->parent->right = new_parent;
-			new_parent->left = node;
-			node->parent = new_parent;
+				x->parent->right = y;
+			y->left = x;
+			x->parent = y;
 		}
 
-		void	_right_rotate( pointer node )
-		{
-			pointer new_parent = node->left;
+		/*
+		** Rotate to the right making X the new parent of Y.
+		** 
+		**		 |		<-----------      |
+		**      (Y)	    left rotate	     (X)
+		**	    /\                       /\
+		**    (X) c                     a (Y) 
+		**    /\        right rotate       /\
+		**   a  b       ----------->      b  c
+		*/
 
-			node->left = new_parent->right;
-			if (new_parent->right != _end)
-				new_parent->right->parent = node;
-			new_parent->parent = node->parent;
-			if (node->parent == _end)
-				_root = new_parent;
-			else if (node == node->parent->left)
-				node->parent->left = new_parent;
+		void	_right_rotate( pointer y )
+		{
+			pointer x = y->left;
+
+			y->left = x->right;
+			if (x->right != _end)
+				x->right->parent = y;
+			x->parent = y->parent;
+			if (y->parent == _end)
+				_root = x;
+			else if (y == y->parent->left)
+				y->parent->left = x;
 			else
-				node->parent->right = new_parent;
-			new_parent->right = node;
-			node->parent = new_parent;
+				y->parent->right = x;
+			x->right = y;
+			y->parent = x;
 		}
+
+		/*
+		** Returns the minimum value found in a leaf starting from node.
+		*/
 
 		pointer	_minimum( pointer node )
 		{
@@ -489,6 +728,10 @@ namespace ft
 			return node;
 		}
 
+		/*
+		** Destroy all the node starting from node in a recursive way.
+		*/
+
 		void _clear( pointer node )
 		{
 			if (node == _end)
@@ -499,6 +742,11 @@ namespace ft
 			_alloc.deallocate(node, 1);
 			_size--;
 		}
+
+		/*
+		** Returns an iterators corresponding to the key in a leaf 
+		** starting from node, in a recursive way.
+		*/
 
 		iterator	_find( const key_type& key, const pointer& node ) const
 		{
@@ -511,6 +759,21 @@ namespace ft
 			else
 				return _find(key, node->left);
 		}
+
+		/*
+		** Because deleted a node is over complicated,
+		** we instead swap the wanted deleted node with a nil node.
+		** We keep track of the original color of z node to see if we need
+		** to fix up the tree in order to guarantee that the red-black 
+		** properties are preserved.
+		** 3 cases are possible :
+		** Case 1 : node's left == end
+		**	Replacement is the right node.
+		** Case 2 : node's right == end
+		** 	Replacement is the left node.
+		** Case 3 : node's left and node's right != end
+		** 	Replacement is the minimum value in node's right leaf
+		*/
 
 		void	_eraseNode( pointer z )
 		{
@@ -550,6 +813,54 @@ namespace ft
 				_deleteFixUp(x);
 			_destroyNode(z);
 		}
+
+		/*
+		** Until x != root and x is black, we need to operate few operation in
+		** order to restablish the red black properties.
+		** 
+		** First, we need to know if node' is at the left or the right 
+		** to node's parent.
+		**
+		** CASE 1 : node's parent is a left leaf.
+		** 4 cases are possible : 
+		** 	Case 1, node's uncle's right (w) is red :
+		** 		Recolor node's uncle and node's parent and
+		**      operate a left rotation.
+		**		We transformed a case 1 in a case 2, 3 or 4.
+		** 	Case 2, node’s sibling w is black,
+		**	and both of w’s children are black :
+		**		Simply recolor node's sibling ans set node to his parent.
+		** 	Case 3, node’s sibling w is black, w’s left child is red,
+		**	and w’s right child is black :
+		**		Recolor w's left in black, w in red 
+		**		and execute a right rotation.
+		**		We set w to node's parent's right.
+		**		We now transform case 3 in case 4.
+		**	Case 4, node’s sibling w is black, and w’s right child is red :
+		**		We perform a recolor and a left rotation.
+		**		Then we set node to root causes the loop to terminate 
+		**		when it reaches this condition.
+		**
+		** CASE 2 :node's parent is a right leaf.
+		** 4 cases are possible : 
+		** 	Case 1, node's uncle's left (w) is red :
+		** 		Recolor node's uncle and node's parent and
+		**      operate a right rotation.
+		**		We transformed a case 1 in a case 2, 3 or 4.
+		** 	Case 2, node’s sibling w is black,
+		**	and both of w’s children are black :
+		**		Simply recolor node's sibling ans set node to his parent.
+		** 	Case 3, node’s sibling w is black, w’s right child is red,
+		**	and w’s left child is black :
+		**		Recolor w's right in black, w in red 
+		**		and execute a left rotation.
+		**		We set w to node's parent's left.
+		**		We now transform case 3 in case 4.
+		**	Case 4, node’s sibling w is black, and w’s left child is red :
+		**		We perform a recolor and a right rotation.
+		**		Then we set node to root causes the loop to terminate 
+		**		when it reaches this condition.
+		*/
 
 		void	_deleteFixUp( pointer x )
 		{
@@ -633,6 +944,10 @@ namespace ft
 			}
 		}
 
+		/*
+		** Replaces one subtree as a child of its parent with another subtree.
+		*/
+
 		void	_transplant( pointer u, pointer v )
 		{
 			if (u->parent == _end)
@@ -643,6 +958,10 @@ namespace ft
 				u->parent->right = v;
 			v->parent = u->parent;
 		}
+
+		/*
+		** Destroy a single node.
+		*/
 
 		void	_destroyNode( pointer node )
 		{

@@ -45,7 +45,7 @@ function VectorAll()
 	$std "11611"
 	CompareFiles
 
-	echo -e $BBlue "Tests Relational Operators" $Color_Off
+	echo -e $BBlue "Tests Vector Relational Operators" $Color_Off
 	echo
 
 	echo -e $BWhite "Test Relational Operators" $Color_Off

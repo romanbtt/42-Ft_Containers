@@ -45,7 +45,7 @@ function RandomAccessAllArithmetic()
 
 function PrintRandomAccessArithmeticMenu()
 {
-	echo -e $BPurple --- Random Access Constructor menu --- $Color_Off
+	echo -e $BPurple --- Random Access Arithmetic menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Incrementation $Color_Off
 	echo -e $BCyan 2 $BWhite - Decremention $Color_Off
 	echo -e $BCyan 3 $BWhite - Addition $Color_Off

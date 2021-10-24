@@ -6,12 +6,12 @@
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:04:09 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/23 00:21:50 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 13:13:58 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
-# define STACK_H
+#define STACK_H
 
 # include "vector.hpp"
 
@@ -111,7 +111,8 @@ namespace ft
 	protected:
 
 		Sequence c;
-	};
+
+	}; // class stack
 
 		/*
 		** Performs the appropriate comparison operation

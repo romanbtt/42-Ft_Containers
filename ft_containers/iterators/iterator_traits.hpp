@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator_traits.hpp                                 :+:      :+:    :+:   */
+/*   iterator_traits.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 16:04:26 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/09/07 17:40:24 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/23 22:23:02 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 
 namespace ft
 {
+
+	/*
+	** Traits struct defining properties of iterators.
+	*/
+
 	struct input_iterator_tag {};
 
 	struct output_iterator_tag {};
@@ -55,8 +60,7 @@ namespace ft
 		typedef T											value_type;
 		typedef std::ptrdiff_t								difference_type;
 		typedef T*											pointer;
-		typedef T&											reference;
-		
+		typedef T&											reference;	
 	};
 
 	template<typename T>
@@ -67,7 +71,6 @@ namespace ft
 		typedef std::ptrdiff_t								difference_type;
 		typedef const T*									pointer;
 		typedef const T&									reference;
-		
 	};
 	
 } // namespace ft

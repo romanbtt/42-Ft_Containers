@@ -45,7 +45,7 @@ function RandomAccessReverseAllArithmetic()
 
 function PrintRandomAccessReverseArithmeticMenu()
 {
-	echo -e $BPurple --- Random Access Reverse Constructor menu --- $Color_Off
+	echo -e $BPurple --- Random Access Reverse Arithmetic menu --- $Color_Off
 	echo -e $BCyan 1 $BWhite - Incrementation $Color_Off
 	echo -e $BCyan 2 $BWhite - Decremention $Color_Off
 	echo -e $BCyan 3 $BWhite - Addition $Color_Off
