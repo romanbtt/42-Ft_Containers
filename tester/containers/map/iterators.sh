@@ -7,31 +7,38 @@ function MapIterator()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapIteratorsMenu
 }
 
 function MapAllIterators()
 {
-	echo -e $BWhite "Test Begin" $Color_Off
-	$ft "12211"
-	$std "12211"
+	echo -e $BWhite "Test Map Begin" $Color_Off
+	Execute $ft "12211"
+	Execute $std "12211"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test End" $Color_Off
-	$ft "12221"
-	$std "12221"
+	echo -e $BWhite "Test Map End" $Color_Off
+	Execute $ft "12221"
+	Execute $std "12221"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rbegin" $Color_Off
-	$ft "12231"
-	$std "12231"
+	echo -e $BWhite "Test Map Rbegin" $Color_Off
+	Execute $ft "12231"
+	Execute $std "12231"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rend" $Color_Off
-	$ft "12241"
-	$std "12241"
+	echo -e $BWhite "Test Map Rend" $Color_Off
+	Execute $ft "12241"
+	Execute $std "12241"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function MapIteratorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapIterator "Test Begin" "12210"
+			MapIterator "Test Map Begin" "12210"
 		elif [[ $input == "2" ]]
 		then
-			MapIterator "Test End" "12220"
+			MapIterator "Test Map End" "12220"
 		elif [[ $input == "3" ]]
 		then
-			MapIterator "Test Rbegin" "12230"
+			MapIterator "Test Map Rbegin" "12230"
 		elif [[ $input == "4" ]]
 		then
-			MapIterator "Test Rend" "12240"
+			MapIterator "Test Map Rend" "12240"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllIterators '1'

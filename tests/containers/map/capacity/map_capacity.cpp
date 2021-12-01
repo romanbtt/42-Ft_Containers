@@ -76,7 +76,7 @@ void	map_size(char *argv)
     testFile << "Size of map<int, int> test1 : " << test1.size() << "\n\n";
     
     testFile << "namespace::map<int, int> test2\n";
-	testFile << "Size of map<int> test2 : " << test2.size() << '\n';
+	testFile << "Size of map<int> test2      : " << test2.size() << '\n';
     
     testFile.close();
     if (runAll == false)

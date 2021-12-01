@@ -7,31 +7,38 @@ function MapModifiers()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapModifiersMenu
 }
 
 function MapAllModifiers()
 {
-	echo -e $BWhite "Test Insert" $Color_Off
-	$ft "12511"
-	$std "12511"
+	echo -e $BWhite "Test Map Insert" $Color_Off
+	Execute $ft "12511"
+	Execute $std "12511"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Erase" $Color_Off
-	$ft "12521"
-	$std "12521"
+	echo -e $BWhite "Test Map Erase" $Color_Off
+	Execute $ft "12521"
+	Execute $std "12521"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Swap" $Color_Off
-	$ft "12531"
-	$std "12531"
+	echo -e $BWhite "Test Map Swap" $Color_Off
+	Execute $ft "12531"
+	Execute $std "12531"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Clear" $Color_Off
-	$ft "12541"
-	$std "12541"
+	echo -e $BWhite "Test Map Clear" $Color_Off
+	Execute $ft "12541"
+	Execute $std "12541"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function MapModifiersMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapModifiers "Test Insert" "12510"
+			MapModifiers "Test Map Insert" "12510"
 		elif [[ $input == "2" ]]
 		then
-			MapModifiers "Test Erase" "12520"
+			MapModifiers "Test Map Erase" "12520"
 		elif [[ $input == "3" ]]
 		then
-			MapModifiers "Test Swap" "12530"
+			MapModifiers "Test Map Swap" "12530"
 		elif [[ $input == "4" ]]
 		then
-			MapModifiers "Test Clear" "12540"
+			MapModifiers "Test Map Clear" "12540"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllModifiers '1'

@@ -7,23 +7,28 @@ function BidirectionalReverseArithmetic()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintBidirectionalReverseArithmeticMenu
 }
 
 function BidirectionalReverseAllArithmetic()
 {
-	echo -e $BWhite "Test Increment" $Color_Off
-	$ft "24311"
-	$std "24311"
+	echo -e $BWhite "Test Bidirectional Reverse Increment" $Color_Off
+	Execute $ft "24311"
+	Execute $std "24311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Decrement" $Color_Off
-	$ft "24321"
-	$std "24321"
+	echo -e $BWhite "Test Bidirectional Reverse Decrement" $Color_Off
+	Execute $ft "24321"
+	Execute $std "24321"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function BidirectionalReverseArithmeticMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-		 BidirectionalReverseArithmetic "Test Incrementation" "24310"
+		 BidirectionalReverseArithmetic "Test Bidirectional Reverse Incrementation" "24310"
 		elif [[ $input == "2" ]]
 		then
-		 BidirectionalReverseArithmetic "Test Decremention" "24320"
+		 BidirectionalReverseArithmetic "Test Bidirectional Reverse Decremention" "24320"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 		 BidirectionalReverseAllArithmetic '1'

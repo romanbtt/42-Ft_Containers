@@ -32,7 +32,7 @@ void	bidirectional_copy_constructors(char *argv)
     testFile << "NS::map<int, int>::iterator copy(original)\n\n";
 
     testFile << "original key point to : " << original->first << '\n';
-    testFile << "copy point key to : " << copy->first << '\n';
+    testFile << "copy point key to     : " << copy->first << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -89,7 +89,7 @@ void	bidirectional_operator_equal(char *argv)
     testFile << "NS::map<int, int>::iterator copy = original\n\n";
 
     testFile << "original key point to : " << original->first << '\n';
-    testFile << "copy key point to : " << copy->first << '\n';
+    testFile << "copy key point to     : " << copy->first << '\n';
     testFile.close();
     if (runAll == false)
     {

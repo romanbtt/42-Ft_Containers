@@ -7,31 +7,38 @@ function SetConstructor()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintSetConstructorsMenu
 }
 
 function SetAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "14111"
-	$std "14111"
+	echo -e $BWhite "Test Set Default constructor" $Color_Off
+	Execute $ft "14111"
+	Execute $std "14111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Range constructor" $Color_Off
-	$ft "14121"
-	$std "14121"
+	echo -e $BWhite "Test Set Range constructor" $Color_Off
+	Execute $ft "14121"
+	Execute $std "14121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "14131"
-	$std "14131"
+	echo -e $BWhite "Test Set Copy constructor" $Color_Off
+	Execute $ft "14131"
+	Execute $std "14131"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "14141"
-	$std "14141"
+	echo -e $BWhite "Test Set Operator Equal" $Color_Off
+	Execute $ft "14141"
+	Execute $std "14141"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function SetConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			SetConstructor "Test Default constructor" "14110"
+			SetConstructor "Test Set Default constructor" "14110"
 		elif [[ $input == "2" ]]
 		then
-			SetConstructor "Test Range constructor" "14120"
+			SetConstructor "Test Set Range constructor" "14120"
 		elif [[ $input == "3" ]]
 		then
-			SetConstructor "Test Copy constructor" "14130"
+			SetConstructor "Test Set Copy constructor" "14130"
 		elif [[ $input == "4" ]]
 		then
-			SetConstructor "Test Operator Equal" "14140"
+			SetConstructor "Test Set Operator Equal" "14140"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			SetAllConstructors '1'

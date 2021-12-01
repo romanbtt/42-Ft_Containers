@@ -7,43 +7,53 @@ function VectorModifiers()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintVectorModifiersMenu
 }
 
 function VectorAllModifiers()
 {
-	echo -e $BWhite "Test Assign" $Color_Off
-	$ft "11511"
-	$std "11511"
+	echo -e $BWhite "Test Vector Assign" $Color_Off
+	Execute $ft "11511"
+	Execute $std "11511"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Push_back" $Color_Off
-	$ft "11521"
-	$std "11521"
+	echo -e $BWhite "Test Vector Push_back" $Color_Off
+	Execute $ft "11521"
+	Execute $std "11521"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Pop_back" $Color_Off
-	$ft "11531"
-	$std "11531"
+	echo -e $BWhite "Test Vector Pop_back" $Color_Off
+	Execute $ft "11531"
+	Execute $std "11531"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Insert" $Color_Off
-	$ft "11541"
-	$std "11541"
+	echo -e $BWhite "Test Vector Insert" $Color_Off
+	Execute $ft "11541"
+	Execute $std "11541"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Erase" $Color_Off
-	$ft "11551"
-	$std "11551"
+	echo -e $BWhite "Test Vector Erase" $Color_Off
+	Execute $ft "11551"
+	Execute $std "11551"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Swap" $Color_Off
-	$ft "11561"
-	$std "11561"
+	echo -e $BWhite "Test Vector Swap" $Color_Off
+	Execute $ft "11561"
+	Execute $std "11561"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Clear" $Color_Off
-	$ft "11571"
-	$std "11571"
+	echo -e $BWhite "Test Vector Clear" $Color_Off
+	Execute $ft "11571"
+	Execute $std "11571"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -76,25 +86,25 @@ function VectorModifiersMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			VectorModifiers "Test Assign" "11510"
+			VectorModifiers "Test Vector Assign" "11510"
 		elif [[ $input == "2" ]]
 		then
-			VectorModifiers "Test Push_back" "11520"
+			VectorModifiers "Test Vector Push_back" "11520"
 		elif [[ $input == "3" ]]
 		then
-			VectorModifiers "Test Pop_back" "11530"
+			VectorModifiers "Test Vector Pop_back" "11530"
 		elif [[ $input == "4" ]]
 		then
-			VectorModifiers "Test Insert" "11540"
+			VectorModifiers "Test Vector Insert" "11540"
 		elif [[ $input == "5" ]]
 		then
-			VectorModifiers "Test Erase" "11550"
+			VectorModifiers "Test Vector Erase" "11550"
 		elif [[ $input == "6" ]]
 		then
-			VectorModifiers "Test Swap" "11560"
+			VectorModifiers "Test Vector Swap" "11560"
 		elif [[ $input == "7" ]]
 		then
-			VectorModifiers "Test Clear" "11570"
+			VectorModifiers "Test Vector Clear" "11570"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorAllModifiers '1'

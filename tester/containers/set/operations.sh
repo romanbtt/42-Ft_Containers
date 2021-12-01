@@ -7,35 +7,43 @@ function SetOperations()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintSetOperationsMenu
 }
 
 function SetAllOperations()
 {
-	echo -e $BWhite "Test Find" $Color_Off
-	$ft "14611"
-	$std "14611"
+	echo -e $BWhite "Test Set Find" $Color_Off
+	Execute $ft "14611"
+	Execute $std "14611"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Count" $Color_Off
-	$ft "14621"
-	$std "14621"
+	echo -e $BWhite "Test Set Count" $Color_Off
+	Execute $ft "14621"
+	Execute $std "14621"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Lower_bound" $Color_Off
-	$ft "14631"
-	$std "14631"
+	echo -e $BWhite "Test Set Lower_bound" $Color_Off
+	Execute $ft "14631"
+	Execute $std "14631"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Upper_bound" $Color_Off
-	$ft "14641"
-	$std "14641"
+	echo -e $BWhite "Test Set Upper_bound" $Color_Off
+	Execute $ft "14641"
+	Execute $std "14641"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Equal_range" $Color_Off
-	$ft "14651"
-	$std "14651"
+	echo -e $BWhite "Test Set Equal_range" $Color_Off
+	Execute $ft "14651"
+	Execute $std "14651"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -66,19 +74,19 @@ function SetOperationsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			SetOperations "Test Find" "14610"
+			SetOperations "Test Set Find" "14610"
 		elif [[ $input == "2" ]]
 		then
-			SetOperations "Test Count" "14620"
+			SetOperations "Test Set Count" "14620"
 		elif [[ $input == "3" ]]
 		then
-			SetOperations "Test Lower_bound" "14630"
+			SetOperations "Test Set Lower_bound" "14630"
 		elif [[ $input == "4" ]]
 		then
-			SetOperations "Test Upper_bound" "14640"
+			SetOperations "Test Set Upper_bound" "14640"
 		elif [[ $input == "5" ]]
 		then
-			SetOperations "Test Equal_range" "14650"
+			SetOperations "Test Set Equal_range" "14650"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			SetAllOperations '1'

@@ -7,23 +7,28 @@ function SetObservers()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintSetObserversMenu
 }
 
 function SetAllObservers()
 {
-	echo -e $BWhite "Test Key_comp" $Color_Off
-	$ft "14511"
-	$std "14511"
+	echo -e $BWhite "Test Set Key_comp" $Color_Off
+	Execute $ft "14511"
+	Execute $std "14511"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Value_comp" $Color_Off
-	$ft "14521"
-	$std "14521"
+	echo -e $BWhite "Test Set Value_comp" $Color_Off
+	Execute $ft "14521"
+	Execute $std "14521"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function SetObserversMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			SetObservers "Test Key_comp" "14510"
+			SetObservers "Test Set Key_comp" "14510"
 		elif [[ $input == "2" ]]
 		then
-			SetObservers "Test Value_comp" "14520"
+			SetObservers "Test Set Value_comp" "14520"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			SetAllObservers '1'

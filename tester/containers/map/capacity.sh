@@ -7,27 +7,33 @@ function MapCapacity()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapCapacityMenu
 }
 
 function MapAllCapacity()
 {
-	echo -e $BWhite "Test Empty" $Color_Off
-	$ft "12311"
-	$std "12311"
+	echo -e $BWhite "Test Map Empty" $Color_Off
+	Execute $ft "12311"
+	Execute $std "12311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Size" $Color_Off
-	$ft "12321"
-	$std "12321"
+	echo -e $BWhite "Test Map Size" $Color_Off
+	Execute $ft "12321"
+	Execute $std "12321"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Max Size" $Color_Off
-	$ft "12331"
-	$std "12331"
+	echo -e $BWhite "Test Map Max Size" $Color_Off
+	Execute $ft "12331"
+	Execute $std "12331"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -56,13 +62,13 @@ function MapCapacityMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapCapacity "Test Empty" "12310"
+			MapCapacity "Test Map Empty" "12310"
 		elif [[ $input == "2" ]]
 		then
-			MapCapacity "Test Size" "12320"
+			MapCapacity "Test Map Size" "12320"
 		elif [[ $input == "3" ]]
 		then
-			MapCapacity "Test Max Size" "12330"
+			MapCapacity "Test Map Max Size" "12330"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllCapacity '1'

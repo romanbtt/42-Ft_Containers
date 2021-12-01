@@ -57,7 +57,7 @@ void	random_access_reverse_decrement(char *argv)
     testFile << "namespace::vector<int>::reverse_iterator it_test = test.rend()\n\n";
     testFile << "*(--it_test) : " << *(--it_test) << '\n';
 	testFile << "*(it_test--) : " << *(it_test--) << '\n';
-	testFile << "*it_test-- : " << *it_test-- << '\n';
+	testFile << "*it_test--   : " << *it_test-- << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -85,7 +85,7 @@ void	random_access_reverse_increment(char *argv)
     testFile << "namespace::vector<int>::reverse_iterator it_test = test.rbegin()\n\n";
     testFile << "*(++it_test) : " << *(++it_test) << '\n';
 	testFile << "*(it_test++) : " << *(it_test++) << '\n';
-	testFile << "*it_test++ : " << *it_test++ << '\n';
+	testFile << "*it_test++   : " << *it_test++ << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -114,7 +114,7 @@ void	random_access_reverse_minus(char *argv)
 	    NS::vector<int>::reverse_iterator it_test2 = test.rend() - 5;
     testFile << "namespace::vector<int>::reverse_iterator it_test2 = test.rend() - 5\n\n";
 	it_test1 = it_test1 - 2;
-    testFile << "it_test1 = it_test1 - 2 : " << *it_test1  << '\n';
+    testFile << "it_test1 = it_test1 - 2         : " << *it_test1  << '\n';
 	*it_test1 = it_test1 - it_test2;
 	testFile << "*it_test1 = it_test1 - it_test2 : " << *it_test1 << '\n';
     testFile.close();

@@ -13,11 +13,11 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-# include "../iterators/random_access_iterator.hpp"
-# include "../iterators/reverse_iterator.hpp"
-# include "../iterators/type_traits.hpp"
+# include "../iterators/randomAccessIterator.hpp"
+# include "../iterators/reverseIterator.hpp"
+# include "../iterators/typeTraits.hpp"
 # include "../utils/distance.hpp"
-# include "../utils/lexicographical_compare.hpp"
+# include "../utils/lexicographicalCompare.hpp"
 # include "../utils/equal.hpp"
 # include <memory>
 # include <limits>

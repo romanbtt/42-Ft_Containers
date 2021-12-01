@@ -258,7 +258,7 @@ void	map_clear(char *argv)
     test.insert(NS::make_pair(9, 0));
     test.insert(NS::make_pair(2, 6));
 
-	testFile << "\nSize of map<int, int> test before clear : " << test.size() << '\n';
+	testFile << "\nSize of map<int, int> test before clear             : " << test.size() << '\n';
 
 	testFile << "Content of map<int, int> test (Keys) before clear   : ";
    	for (NS::map<int, int>::iterator it = test.begin(); it != test.end(); it++)
@@ -273,15 +273,15 @@ void	map_clear(char *argv)
 	test.clear();
 	testFile << "\n\n";
 
-	testFile << "\nSize of map<int, int> test after clear : " << test.size() << '\n';
+	testFile << "\nSize of map<int, int> test after clear              : " << test.size() << '\n';
 
-	testFile << "Content of map<int, int> test (Keys) after clear   : ";
+	testFile << "Content of map<int, int> test (Keys) after clear    : ";
    	for (NS::map<int, int>::iterator it = test.begin(); it != test.end(); it++)
        testFile << "| " << it->first << " |";
 	
 	testFile << '\n';
 
-   	testFile << "\nContent of map<int, int> test (Values) after clear : ";
+   	testFile << "\nContent of map<int, int> test (Values) after clear  : ";
    	for (NS::map<int, int>::iterator it = test.begin(); it != test.end(); it++)
        testFile << "| " << it->second << " |";
 

@@ -7,31 +7,38 @@ function VectorAccess()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintVectorAccessMenu
 }
 
 function VectorAllAccess()
 {
-	echo -e $BWhite "Test Operator[]" $Color_Off
-	$ft "11411"
-	$std "11411"
+	echo -e $BWhite "Test Vector Operator[]" $Color_Off
+	Execute $ft "11411"
+	Execute $std "11411"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test At" $Color_Off
-	$ft "11421"
-	$std "11421"
+	echo -e $BWhite "Test Vector At" $Color_Off
+	Execute $ft "11421"
+	Execute $std "11421"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Front" $Color_Off
-	$ft "11431"
-	$std "11431"
+	echo -e $BWhite "Test Vector Front" $Color_Off
+	Execute $ft "11431"
+	Execute $std "11431"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Back" $Color_Off
-	$ft "11441"
-	$std "11441"
+	echo -e $BWhite "Test Vector Back" $Color_Off
+	Execute $ft "11441"
+	Execute $std "11441"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function VectorAccessMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			VectorAccess "Test Operator[]" "11410"
+			VectorAccess "Test Vector Operator[]" "11410"
 		elif [[ $input == "2" ]]
 		then
-			VectorAccess "Test At" "11420"
+			VectorAccess "Test Vector At" "11420"
 		elif [[ $input == "3" ]]
 		then
-			VectorAccess "Test Front" "11430"
+			VectorAccess "Test Vector Front" "11430"
 		elif [[ $input == "4" ]]
 		then
-			VectorAccess "Test Back" "11440"
+			VectorAccess "Test Vector Back" "11440"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorAllAccess '1'

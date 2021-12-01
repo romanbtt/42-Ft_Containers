@@ -25,8 +25,8 @@ void	vector_begin(char *argv)
 		testFile << "| " << test1[i] << " |";
 	}
 	testFile << '\n';
-    testFile << "Iterator Begin = " << *(test1.begin()) << '\n';
-	testFile << "Iterator Begin + 5 = " << *(test1.begin() + 5) << '\n';
+    testFile << "Iterator Begin         : " << *(test1.begin()) << '\n';
+	testFile << "Iterator Begin + 5     : " << *(test1.begin() + 5) << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -49,8 +49,8 @@ void	vector_end(char *argv)
 		testFile << "| " << test1[i] << " |";
 	}
 	testFile << '\n';
-    testFile << "Iterator End - 1 = " << *(test1.end() - 1) << '\n';
-	testFile << "Iterator End - 5 = " << *(test1.end() - 5) << '\n';
+    testFile << "Iterator End - 1       : " << *(test1.end() - 1) << '\n';
+	testFile << "Iterator End - 5       : " << *(test1.end() - 5) << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -73,8 +73,8 @@ void	vector_rbegin(char *argv)
 		testFile << "| " << test1[i] << " |";
 	}
 	testFile << '\n';
-    testFile << "Iterator Rbegin = " << *(test1.rbegin()) << '\n';
-	testFile << "Iterator Rbegin + 5 = " << *(test1.rbegin() + 5) << '\n';
+    testFile << "Iterator Rbegin        : " << *(test1.rbegin()) << '\n';
+	testFile << "Iterator Rbegin + 5    : " << *(test1.rbegin() + 5) << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -97,8 +97,8 @@ void	vector_rend(char *argv)
 		testFile << "| " << test1[i] << " |";
 	}
 	testFile << '\n';
-    testFile << "Iterator Rend - 1 = " << *(test1.rend() - 1) << '\n';
-	testFile << "Iterator Rend - 5 = " << *(test1.rend() - 5) << '\n';
+    testFile << "Iterator Rend - 1      : " << *(test1.rend() - 1) << '\n';
+	testFile << "Iterator Rend - 5      : " << *(test1.rend() - 5) << '\n';
     testFile.close();
     if (runAll == false)
     {

@@ -1,58 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb_tree_set.hpp                                    :+:      :+:    :+:   */
+/*   rb_tree_map.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romanbtt <marvin@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:37:19 by romanbtt          #+#    #+#             */
-/*   Updated: 2021/10/29 15:41:50 by romanbtt         ###   ########.fr       */
+/*   Updated: 2021/10/29 00:52:16 by romanbtt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RB_TREE_SET_H
-# define RB_TREE_SET_H
+#ifndef RBTREE_H
+# define RBTREE_H
 
 # include <memory>
 # include "less.hpp"
 # include "pair.hpp"
-# include "../iterators/rb_tree_iterator.hpp"
+# include "../iterators/rbTreeIterator.hpp"
 
 namespace ft
 {
 
-	enum color_node_set
+	enum color_node_map
 	{
-		BLACK_SET,
-		RED_SET
+		BLACK_MAP,
+		RED_MAP
 	};
 
-	template<typename T>
-	struct rbt_node_set
+	template<typename Key, typename T>
+	struct rbt_node_map
 	{
-		typedef T	value_type;
+		typedef ft::pair<Key, T>	value_type;
 
 		value_type			content;
-		rbt_node_set*		parent;
-		rbt_node_set*		left;
-		rbt_node_set*		right;
-		color_node_set		color;
+		rbt_node_map*		parent;
+		rbt_node_map*		left;
+		rbt_node_map*		right;
+		color_node_map		color;
 
-		rbt_node_set( value_type content ) : content(content)
+		rbt_node_map( value_type content ) : content(content)
 		{
 			return ;
 		}
-	}; // struct rbt_node_set
+	}; // struct rbt_node_map
 
-	template<typename T, typename Compare = ft::less<T>,
-		typename Alloc = std::allocator<T> >
-	class RBTree
+	template<typename Key, typename T, typename Compare = ft::less<Key>,
+		typename Alloc = std::allocator<ft::pair<const Key, T> > >
+	class RBTreeMap
 	{
 
 	public:
-		typedef T										value_type;
+		typedef Key										key_type;
+		typedef T										mapped_type;
 		typedef Compare									key_compare;
-		typedef rbt_node_set<value_type>				node_type;
+		typedef rbt_node_map<key_type, mapped_type>		node_type;
 		typedef ft::RBTreeIterator<node_type>			iterator;
 		typedef ft::RBTreeIterator<const node_type>		const_iterator;
 		typedef ft::reverse_iterator<iterator>			reverse_iterator;
@@ -61,31 +62,32 @@ namespace ft
 		typedef const node_type*						const_pointer;
 		typedef node_type&								reference;
 		typedef const node_type&						const_reference;
+		typedef ft::pair<const Key, T>					value_type;
 		typedef typename Alloc::template rebind
-			<rbt_node_set<value_type> >::other	allocator_type;
+			<rbt_node_map<key_type, mapped_type> >::other	allocator_type;
 		typedef size_t									size_type;
 
 		/*
-		** Constructs an empty red_SETblack_SET tree, with no elements.
+		** Constructs an empty red_MAPblack_MAP tree, with no elements.
 		*/
 
-		explicit RBTree( const key_compare& comp = key_compare(),
+		explicit RBTreeMap( const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type() )
 			: _root(0), _end(0), _alloc(alloc), _compare(comp), _size(0)
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
-			_end->color = BLACK_SET;
+			_end->color = BLACK_MAP;
 			_root = _end;
 		}
 
 		/*
-		** Constructs a red_SETblack_SET tree with as many elements as the range [first,last),
+		** Constructs a red_MAPblack_MAP tree with as many elements as the range [first,last),
 		** with each element constructed from its corresponding element in that range.
 		*/
 
 		template<typename InputIterator>
-		RBTree( InputIterator first, InputIterator last,
+		RBTreeMap( InputIterator first, InputIterator last,
 				key_compare const& comp = key_compare(),
 				allocator_type const& alloc = allocator_type() )
 				: _root(0), _end(0), _alloc(alloc),
@@ -93,22 +95,22 @@ namespace ft
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
-			_end->color = BLACK_SET;
+			_end->color = BLACK_MAP;
 			_root = _end;
 			insert(first, last);
 		}
 
 		/*
-		** Constructs a red_SETblack_SET tree with a copy of each of the elements in src.
+		** Constructs a red_MAPblack_MAP tree with a copy of each of the elements in src.
 		*/
 
-		RBTree( const RBTree& src )
+		RBTreeMap( const RBTreeMap& src )
 			: _root(0), _end(0), _alloc(src._alloc),
 			_compare(src._compare), _size(0)
 		{
 			_end = _alloc.allocate(1);
 			_alloc.construct(_end, node_type(value_type()));
-			_end->color = BLACK_SET;
+			_end->color = BLACK_MAP;
 			_root = _end;
 			*this = src;
 		}
@@ -117,7 +119,7 @@ namespace ft
 		** Destroys the tree object.
 		*/
 
-		virtual	~RBTree( void )
+		virtual	~RBTreeMap( void )
 		{
 			clear();
 			_alloc.destroy(_end);
@@ -128,7 +130,7 @@ namespace ft
 		** Assigns new contents to the tree, replacing its current content.
 		*/
 
-		RBTree&	operator=( RBTree const &rhs )
+		RBTreeMap&	operator=( RBTreeMap const &rhs )
 		{
 			if (this != &rhs)
 			{
@@ -252,13 +254,34 @@ namespace ft
 		}
 
 		/*
+		** If key matches the key of an element in the container,
+		** the function returns a reference to its mapped value.
+		** If key does not match the key of any element in the container,
+		** the function inserts a new element with that key and returns
+		** a reference to its mapped value.
+		*/
+
+		mapped_type&	operator[]( const key_type& key )
+		{
+			iterator it = _find(key, _root);
+			
+			if (it == end())
+			{
+				ft::pair<iterator, bool>	p;
+				p = insert(ft::make_pair(key, mapped_type()));
+				return p.first.get_node()->content.second;
+			}
+			return it.get_node()->content.second;
+		}
+
+		/*
 		** Extends the container by inserting one single element, 
 		** effectively increasing the container size by one.
 		*/
 
 		ft::pair<iterator, bool>	insert( const value_type& val )
       	{
-			iterator it = find(val);
+			iterator it = find(val.first);
 
 			if (it != end())
 				return ft::make_pair(it, false);
@@ -281,8 +304,8 @@ namespace ft
       	{
 			pointer succ = position.successor(position.get_node());
 
-			if (_compare(*position, val) &&
-				_compare(val, succ->content))
+			if (_compare(position->first, val.first) &&
+				_compare(val.first, succ->content.first))
 			{
 				pointer node = _alloc.allocate(1);
 				_alloc.construct(node, node_type(val));
@@ -309,7 +332,7 @@ namespace ft
 
 		/*
 		** Removes from the map container a single element at a given position.
-		** This effectively red_SETuces the container size by the number
+		** This effectively red_MAPuces the container size by the number
 		** of elements removed, which are destroyed.
 		*/
 
@@ -324,11 +347,11 @@ namespace ft
 		/*
 		** Removes from the map container a single element
 		** whose match with a given key.
-		** This effectively red_SETuces the container size by the number
+		** This effectively red_MAPuces the container size by the number
 		** of elements removed, which are destroyed.
 		*/
 
-		size_type	erase( const value_type& key )
+		size_type	erase( const key_type& key )
 		{
 			iterator it = find(key);
 			if (it == end())
@@ -339,7 +362,7 @@ namespace ft
 
 		/*
 		** Removes from the map container a range of elements.
-		** This effectively red_SETuces the container size by the number
+		** This effectively red_MAPuces the container size by the number
 		** of elements removed, which are destroyed.
 		*/
 
@@ -376,7 +399,7 @@ namespace ft
 		** otherwise it returns an iterator to map::end.
 		*/
 
-		iterator	find( const value_type& key )
+		iterator	find( const key_type& key )
 		{
 			iterator it = _find(key, _root);
 			
@@ -389,7 +412,7 @@ namespace ft
 		** otherwise it returns an iterator to map::end.
 		*/
 
-		const_iterator	find( const value_type& key ) const
+		const_iterator	find( const key_type& key ) const
 		{
 			const_iterator it = _find(key, _root);
 
@@ -402,7 +425,7 @@ namespace ft
 		** 0 or 1 in the case of map.
 		*/
 
-		size_type	count( const value_type& key ) const
+		size_type	count( const key_type& key ) const
 		{
 			if (find(key) != end())
 				return (1);
@@ -411,14 +434,14 @@ namespace ft
 
 		/*
 		** Returns an iterator pointing to the first element
-		** in the container whose key is not considered_SET to go before key.
+		** in the container whose key is not considered_MAP to go before key.
 		*/
 
-		iterator	lower_bound( const value_type& key )
+		iterator	lower_bound( const key_type& key )
 		{
 			for (iterator it = begin(); it != end(); it++)
 			{
-				if (!(_compare(it.get_node()->content, key)))
+				if (!(_compare(it.get_node()->content.first, key)))
 					return it;
 			}
 			return (end());
@@ -426,10 +449,10 @@ namespace ft
 
 		/*
 		** Returns a const iterator pointing to the first element
-		** in the container whose key is not considered_SET to go before key.
+		** in the container whose key is not considered_MAP to go before key.
 		*/
 
-		const_iterator	lower_bound( const value_type& key ) const
+		const_iterator	lower_bound( const key_type& key ) const
 		{
 			for (const_iterator it = begin(); it != end(); it++)
 			{
@@ -441,14 +464,14 @@ namespace ft
 
 		/*
 		** Returns an iterator pointing to the first element
-		** in the container whose key is considered_SET to go after key.
+		** in the container whose key is considered_MAP to go after key.
 		*/
 
-		iterator	upper_bound( const value_type& key )
+		iterator	upper_bound( const key_type& key )
 		{
 			for (iterator it = begin(); it != end(); it++)
 			{
-				if (_compare(key, it.get_node()->content))
+				if (_compare(key, it.get_node()->content.first))
 					return it;
 			}
 			return (end());
@@ -456,10 +479,10 @@ namespace ft
 
 		/*
 		** Returns a const iterator pointing to the first element
-		** in the container whose key is considered_SET to go after key.
+		** in the container whose key is considered_MAP to go after key.
 		*/
 
-		const_iterator	upper_bound( const value_type& key ) const
+		const_iterator	upper_bound( const key_type& key ) const
 		{
 			for (const_iterator it = begin(); it != end(); it++)
 			{
@@ -474,7 +497,7 @@ namespace ft
 		** the elements in the container which have a key equivalent to key.
 		*/
 
-		ft::pair<iterator,iterator>	equal_range( const value_type& key )
+		ft::pair<iterator,iterator>	equal_range( const key_type& key )
 		{
 			return ft::pair<iterator, iterator>(lower_bound(key),
 				upper_bound(key));
@@ -486,7 +509,7 @@ namespace ft
 		*/
 
 		ft::pair<const_iterator, const_iterator>
-			equal_range( const value_type& key ) const
+			equal_range( const key_type& key ) const
 		{
 			return ft::pair<const_iterator, const_iterator>(lower_bound(key),
 				upper_bound(key));
@@ -513,7 +536,7 @@ namespace ft
 		** Inserts a new node at the right position in a leaf starting from
 		** the pointer "from".
 		** Then call insertFixUp in order to recolor and/or rotate nodes
-		** to guarantee that the red_SET-black_SET properties are preserved.
+		** to guarantee that the red_MAP-black_MAP properties are preserved.
 		*/
 
 		pointer	_insertNode( pointer new_node, pointer from )
@@ -524,7 +547,7 @@ namespace ft
 			while (x != _end)
 			{
 				y = x;
-				if (_compare(new_node->content, x->content))
+				if (_compare(new_node->content.first, x->content.first))
 					x = x->left;
 				else
 					x = x->right;
@@ -532,26 +555,26 @@ namespace ft
 			new_node->parent = y;
 			if (y == _end)
 				_root = new_node;
-			else if (_compare(new_node->content, y->content))
+			else if (_compare(new_node->content.first, y->content.first))
 				y->left = new_node;
 			else
 				y->right = new_node;
 			new_node->left = _end;
 			new_node->right = _end;
-			new_node->color = RED_SET;
+			new_node->color = RED_MAP;
 			_insertFixUp(new_node);
 			return (new_node);
 		}
 
 		/*
-		** If the parent of the new node inserted is black_SET, we're all set.
-		** Else and until, node'sp parent is red_SET :
+		** If the parent of the new node inserted is black_MAP, we're all set.
+		** Else and until, node'sp parent is red_MAP :
 		** We need to know if node's parent is at the left or the right 
 		** to node's grandparent.
 		**
 		** CASE 1 : node's parent is a left leaf.
 		** 3 cases are possible : 
-		** 	Case 1, node's uncle is red_SET :
+		** 	Case 1, node's uncle is red_MAP :
 		** 		Recolor and and check with node = node's grandparent.
 		** 	Case 2, node is a right leaf :
 		**		Execute a left rotation, recolor and right rotation.
@@ -560,7 +583,7 @@ namespace ft
 		**
 		** CASE 2 :node's parent is a right leaf.
 		** 3 cases are possible : 
-		** 	Case 1, node's uncle is red_SET :
+		** 	Case 1, node's uncle is red_MAP :
 		** 		Recolor and and check with node = node's grandparent.
 		** 	Case 2, node is a left leaf :
 		**		Execute a right rotation, recolor and left rotation.
@@ -572,60 +595,60 @@ namespace ft
 		{
 			pointer uncle;
 
-			while (node->parent->color == RED_SET)
+			while (node->parent->color == RED_MAP)
 			{
 				if (node->parent == node->parent->parent->left)
 				{
 					uncle = node->parent->parent->right;
-					if (uncle->color == RED_SET)
+					if (uncle->color == RED_MAP)
 					{
-						node->parent->color = BLACK_SET;
-						uncle->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						uncle->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						node = node->parent->parent;
 					}
 					else if(node == node->parent->right)
 					{
 						node = node->parent;
 						_left_rotate(node);
-						node->parent->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						_right_rotate(node->parent->parent);
 					}
 					else
 					{
-						node->parent->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						_right_rotate(node->parent->parent);
 					}
 				}
 				else
 				{
 					uncle = node->parent->parent->left;
-					if (uncle->color == RED_SET)
+					if (uncle->color == RED_MAP)
 					{
-						node->parent->color = BLACK_SET;
-						uncle->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						uncle->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						node = node->parent->parent;
 					}
 					else if(node == node->parent->left)
 					{
 						node = node->parent;
 						_right_rotate(node);
-						node->parent->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						_left_rotate(node->parent->parent);
 					}
 					else
 					{
-						node->parent->color = BLACK_SET;
-						node->parent->parent->color = RED_SET;
+						node->parent->color = BLACK_MAP;
+						node->parent->parent->color = RED_MAP;
 						_left_rotate(node->parent->parent);
 					}
 				}
 			}
-			_root->color = BLACK_SET;
+			_root->color = BLACK_MAP;
 		}
 
 		/*
@@ -725,13 +748,13 @@ namespace ft
 		** starting from node, in a recursive way.
 		*/
 
-		iterator	_find( const value_type& key, const pointer& node ) const
+		iterator	_find( const key_type& key, const pointer& node ) const
 		{
 			if (node == _end)
 				return iterator(_end, _root, _end);
-			else if (node->content == key )
+			else if (node->content.first == key )
 				return iterator(node, _root, _end);
-			if (_compare(node->content, key))
+			if (_compare(node->content.first, key))
 				return _find(key, node->right);
 			else
 				return _find(key, node->left);
@@ -741,7 +764,7 @@ namespace ft
 		** Because deleted a node is over complicated,
 		** we instead swap the wanted deleted node with a nil node.
 		** We keep track of the original color of z node to see if we need
-		** to fix up the tree in order to guarantee that the red_SET-black_SET 
+		** to fix up the tree in order to guarantee that the red_MAP-black_MAP 
 		** properties are preserved.
 		** 3 cases are possible :
 		** Case 1 : node's left == end
@@ -756,7 +779,7 @@ namespace ft
 		{
 			pointer x = 0;
 			pointer y = z;
-			color_node_set y_orginal_color = y->color;
+			color_node_map y_orginal_color = y->color;
 
 			if (z->left == _end)
 			{
@@ -786,54 +809,54 @@ namespace ft
 				y->left->parent = y;
 				y->color = z->color;
 			}
-			if (y_orginal_color == BLACK_SET)
+			if (y_orginal_color == BLACK_MAP)
 				_deleteFixUp(x);
 			_destroyNode(z);
 		}
 
 		/*
-		** Until x != root and x is black_SET, we need to operate few operation in
-		** order to restablish the red_SET black_SET properties.
+		** Until x != root and x is black_MAP, we need to operate few operation in
+		** order to restablish the red_MAP black_MAP properties.
 		** 
 		** First, we need to know if node' is at the left or the right 
 		** to node's parent.
 		**
 		** CASE 1 : node's parent is a left leaf.
 		** 4 cases are possible : 
-		** 	Case 1, node's uncle's right (w) is red_SET :
+		** 	Case 1, node's uncle's right (w) is red_MAP :
 		** 		Recolor node's uncle and node's parent and
 		**      operate a left rotation.
 		**		We transformed a case 1 in a case 2, 3 or 4.
-		** 	Case 2, node’s sibling w is black_SET,
-		**	and both of w’s children are black_SET :
+		** 	Case 2, node’s sibling w is black_MAP,
+		**	and both of w’s children are black_MAP :
 		**		Simply recolor node's sibling ans set node to his parent.
-		** 	Case 3, node’s sibling w is black_SET, w’s left child is red_SET,
-		**	and w’s right child is black_SET :
-		**		Recolor w's left in black_SET, w in red_SET 
+		** 	Case 3, node’s sibling w is black_MAP, w’s left child is red_MAP,
+		**	and w’s right child is black_MAP :
+		**		Recolor w's left in black_MAP, w in red_MAP 
 		**		and execute a right rotation.
 		**		We set w to node's parent's right.
 		**		We now transform case 3 in case 4.
-		**	Case 4, node’s sibling w is black_SET, and w’s right child is red_SET :
+		**	Case 4, node’s sibling w is black_MAP, and w’s right child is red_MAP :
 		**		We perform a recolor and a left rotation.
 		**		Then we set node to root causes the loop to terminate 
 		**		when it reaches this condition.
 		**
 		** CASE 2 :node's parent is a right leaf.
 		** 4 cases are possible : 
-		** 	Case 1, node's uncle's left (w) is red_SET :
+		** 	Case 1, node's uncle's left (w) is red_MAP :
 		** 		Recolor node's uncle and node's parent and
 		**      operate a right rotation.
 		**		We transformed a case 1 in a case 2, 3 or 4.
-		** 	Case 2, node’s sibling w is black_SET,
-		**	and both of w’s children are black_SET :
+		** 	Case 2, node’s sibling w is black_MAP,
+		**	and both of w’s children are black_MAP :
 		**		Simply recolor node's sibling ans set node to his parent.
-		** 	Case 3, node’s sibling w is black_SET, w’s right child is red_SET,
-		**	and w’s left child is black_SET :
-		**		Recolor w's right in black_SET, w in red_SET 
+		** 	Case 3, node’s sibling w is black_MAP, w’s right child is red_MAP,
+		**	and w’s left child is black_MAP :
+		**		Recolor w's right in black_MAP, w in red_MAP 
 		**		and execute a left rotation.
 		**		We set w to node's parent's left.
 		**		We now transform case 3 in case 4.
-		**	Case 4, node’s sibling w is black_SET, and w’s left child is red_SET :
+		**	Case 4, node’s sibling w is black_MAP, and w’s left child is red_MAP :
 		**		We perform a recolor and a right rotation.
 		**		Then we set node to root causes the loop to terminate 
 		**		when it reaches this condition.
@@ -843,40 +866,40 @@ namespace ft
 		{
 			pointer w;
 			
-			while (x != _root && x->color == BLACK_SET)
+			while (x != _root && x->color == BLACK_MAP)
 			{
 				if (x == x->parent->left)
 				{
 					w = x->parent->right;
-					if (w->color == RED_SET)
+					if (w->color == RED_MAP)
 					{
-						w->color = BLACK_SET;
-						x->parent->color = RED_SET;
+						w->color = BLACK_MAP;
+						x->parent->color = RED_MAP;
 						_left_rotate(x->parent);
 						w = x->parent->right;
 					}
-					if (w->left->color == BLACK_SET && w->right->color == BLACK_SET)
+					if (w->left->color == BLACK_MAP && w->right->color == BLACK_MAP)
 					{
-						w->color = RED_SET;
+						w->color = RED_MAP;
 						x = x->parent;
 					}
-					else if (w->right->color == BLACK_SET)
+					else if (w->right->color == BLACK_MAP)
 					{
-						w->left->color = BLACK_SET;
-						w->color = RED_SET;
+						w->left->color = BLACK_MAP;
+						w->color = RED_MAP;
 						_right_rotate(w);
 						w = x->parent->right;
 						w->color = x->parent->color;
-						x->parent->color = BLACK_SET;
-						w->right->color = BLACK_SET;
+						x->parent->color = BLACK_MAP;
+						w->right->color = BLACK_MAP;
 						_left_rotate(x->parent);
 						x = _root;
 					}
 					else
 					{
 						w->color = x->parent->color;
-						x->parent->color = BLACK_SET;
-						w->right->color = BLACK_SET;
+						x->parent->color = BLACK_MAP;
+						w->right->color = BLACK_MAP;
 						_left_rotate(x->parent);
 						x = _root;
 					}
@@ -884,40 +907,40 @@ namespace ft
 				else
 				{
 					w = x->parent->left;
-					if (w->color == RED_SET)
+					if (w->color == RED_MAP)
 					{
-						w->color = BLACK_SET;
-						x->parent->color = RED_SET;
+						w->color = BLACK_MAP;
+						x->parent->color = RED_MAP;
 						_right_rotate(x->parent);
 						w = x->parent->left;
 					}
-					if (w->right->color == BLACK_SET && w->left->color == BLACK_SET)
+					if (w->right->color == BLACK_MAP && w->left->color == BLACK_MAP)
 					{
-						w->color = RED_SET;
+						w->color = RED_MAP;
 						x = x->parent;
 					}
-					else if (w->left->color == BLACK_SET)
+					else if (w->left->color == BLACK_MAP)
 					{
-						w->right->color = BLACK_SET;
-						w->color = RED_SET;
+						w->right->color = BLACK_MAP;
+						w->color = RED_MAP;
 						_left_rotate(w);
 						w = x->parent->left;
 						w->color = x->parent->color;
-						x->parent->color = BLACK_SET;
-						w->left->color = BLACK_SET;
+						x->parent->color = BLACK_MAP;
+						w->left->color = BLACK_MAP;
 						_right_rotate(x->parent);
 						x = _root;
 					}
 					else
 					{
 						w->color = x->parent->color;
-						x->parent->color = BLACK_SET;
-						w->left->color = BLACK_SET;
+						x->parent->color = BLACK_MAP;
+						w->left->color = BLACK_MAP;
 						_right_rotate(x->parent);
 						x = _root;
 					}
 				}
-				x->color = BLACK_SET;
+				x->color = BLACK_MAP;
 			}
 		}
 

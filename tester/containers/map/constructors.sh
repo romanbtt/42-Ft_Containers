@@ -7,31 +7,38 @@ function MapConstructor()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapConstructorsMenu
 }
 
 function MapAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "12111"
-	$std "12111"
+	echo -e $BWhite "Test Map Default constructor" $Color_Off
+	Execute $ft "12111"
+	Execute $std "12111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Range constructor" $Color_Off
-	$ft "12121"
-	$std "12121"
+	echo -e $BWhite "Test Map Range constructor" $Color_Off
+	Execute $ft "12121"
+	Execute $std "12121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "12131"
-	$std "12131"
+	echo -e $BWhite "Test Map Copy constructor" $Color_Off
+	Execute $ft "12131"
+	Execute $std "12131"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "12141"
-	$std "12141"
+	echo -e $BWhite "Test Map Operator Equal" $Color_Off
+	Execute $ft "12141"
+	Execute $std "12141"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function MapConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapConstructor "Test Default constructor" "12110"
+			MapConstructor "Test Map Default constructor" "12110"
 		elif [[ $input == "2" ]]
 		then
-			MapConstructor "Test Range constructor" "12120"
+			MapConstructor "Test Map Range constructor" "12120"
 		elif [[ $input == "3" ]]
 		then
-			MapConstructor "Test Copy constructor" "12130"
+			MapConstructor "Test Map Copy constructor" "12130"
 		elif [[ $input == "4" ]]
 		then
-			MapConstructor "Test Operator Equal" "12140"
+			MapConstructor "Test Map Operator Equal" "12140"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllConstructors '1'

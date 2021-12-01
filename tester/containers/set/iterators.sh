@@ -7,31 +7,38 @@ function SetIterator()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintSetIteratorsMenu
 }
 
 function SetAllIterators()
 {
-	echo -e $BWhite "Test Begin" $Color_Off
-	$ft "14211"
-	$std "14211"
+	echo -e $BWhite "Test Set Begin" $Color_Off
+	Execute $ft "14211"
+	Execute $std "14211"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test End" $Color_Off
-	$ft "14221"
-	$std "14221"
+	echo -e $BWhite "Test Set End" $Color_Off
+	Execute $ft "14221"
+	Execute $std "14221"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rbegin" $Color_Off
-	$ft "14231"
-	$std "14231"
+	echo -e $BWhite "Test Set Rbegin" $Color_Off
+	Execute $ft "14231"
+	Execute $std "14231"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rend" $Color_Off
-	$ft "14241"
-	$std "14241"
+	echo -e $BWhite "Test Set Rend" $Color_Off
+	Execute $ft "14241"
+	Execute $std "14241"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +68,16 @@ function SetIteratorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			SetIterator "Test Begin" "14210"
+			SetIterator "Test Set Begin" "14210"
 		elif [[ $input == "2" ]]
 		then
-			SetIterator "Test End" "14220"
+			SetIterator "Test Set End" "14220"
 		elif [[ $input == "3" ]]
 		then
-			SetIterator "Test Rbegin" "14230"
+			SetIterator "Test Set Rbegin" "14230"
 		elif [[ $input == "4" ]]
 		then
-			SetIterator "Test Rend" "14240"
+			SetIterator "Test Set Rend" "14240"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			SetAllIterators '1'

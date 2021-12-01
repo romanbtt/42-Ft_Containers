@@ -35,7 +35,12 @@ function MapAll()
 
 	echo -e $BBlue "Tests Map Element Access" $Color_Off
 	echo
-	MapAllAccess '0'
+
+	echo -e $BWhite "Tests Map Element Access" $Color_Off
+	Execute $ft "12411"
+	Execute $std "12411"
+	echo
+	CompareFiles
 
 	echo -e $BBlue "Tests Map Modifiers" $Color_Off
 	echo
@@ -53,16 +58,18 @@ function MapAll()
 	echo
 
 	echo -e $BWhite "Test Get_allocator" $Color_Off
-	$ft "12811"
-	$std "12811"
+	Execute $ft "12811"
+	Execute $std "12811"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Map Relational Operators" $Color_Off
 	echo
 
-	echo -e $BWhite "Test Relational Operators" $Color_Off
-	$ft "12911"
-	$std "12911"
+	echo -e $BWhite "Test Map Relational Operators" $Color_Off
+	Execute $ft "12911"
+	Execute $std "12911"
+	echo
 	CompareFiles
 
 	if [[ $1 == '1' ]]
@@ -108,7 +115,7 @@ function MapMenu()
 			MapCapacityMenu
 		elif [[ $input == "4" ]]
 		then
-			MapAccessMenu
+			MapAccess
 		elif [[ $input == "5" ]]
 		then
 			MapModifiersMenu

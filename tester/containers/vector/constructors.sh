@@ -6,36 +6,48 @@ function VectorConstructor()
 {
 	echo -e $BWhite $1 $Color_Off
 	echo
+
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
 	echo
+
+	Execute $ft $2
+	echo
+	
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
+
 	CompareFiles
 	PrintVectorConstructorsMenu
 }
 
 function VectorAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "11111"
-	$std "11111"
+	echo -e $BWhite "Test Vector Default constructor" $Color_Off
+	Execute $ft "11111"
+	Execute $std "11111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Fill constructor" $Color_Off
-	$ft "11121"
-	$std "11121"
+	echo -e $BWhite "Test Vector Fill constructor" $Color_Off
+	Execute $ft "11121"
+	Execute $std "11121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Range constructor" $Color_Off
-	$ft "11131"
-	$std "11131"
+	echo -e $BWhite "Test Vector Range constructor" $Color_Off
+	Execute $ft "11131"
+	Execute $std "11131"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "11141"
-	$std "11141"
+	echo -e $BWhite "Test Vector Copy constructor" $Color_Off
+	Execute $ft "11141"
+	Execute $std "11141"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "11151"
-	$std "11151"
+	echo -e $BWhite "Test Vector Operator Equal" $Color_Off
+	Execute $ft "11151"
+	Execute $std "11151"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -66,19 +78,19 @@ function VectorConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			VectorConstructor "Test Default constructor" "11110"
+			VectorConstructor "Test Vector Default constructor" "11110"
 		elif [[ $input == "2" ]]
 		then
-			VectorConstructor "Test Fill constructor" "11120"
+			VectorConstructor "Test Vector Fill constructor" "11120"
 		elif [[ $input == "3" ]]
 		then
-			VectorConstructor "Test Range constructor" "11130"
+			VectorConstructor "Test Vector Range constructor" "11130"
 		elif [[ $input == "4" ]]
 		then
-			VectorConstructor "Test Copy constructor" "11140"
+			VectorConstructor "Test Vector Copy constructor" "11140"
 		elif [[ $input == "5" ]]
 		then
-			VectorConstructor "Test Operator Equal" "11150"
+			VectorConstructor "Test Vector Operator Equal" "11150"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorAllConstructors '1'

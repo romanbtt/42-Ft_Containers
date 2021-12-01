@@ -37,8 +37,8 @@ void	map_operator_bracket(char *argv)
 
     testFile << "\n\n";
 	testFile << "test[10] : " << test[10] << '\n';
-	testFile << "test[2] : " << test[2] << '\n';
-	testFile << "test[9] : " << test[9] << '\n';
+	testFile << "test[2]  : " << test[2] << '\n';
+	testFile << "test[9]  : " << test[9] << '\n';
     testFile.close();
     if (runAll == false)
     {

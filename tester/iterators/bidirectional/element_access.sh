@@ -4,13 +4,16 @@ source $DIR/../../definition.sh
 
 function BidirectionalElementAccess()
 {
-	echo -e $BWhite "Tests Element Access" $Color_Off
+	echo -e $BWhite "Tests Bidirectional Element Access" $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft "23210"
+	echo
+	Execute $ft "23210"
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std "23210"
+	echo
+	Execute $std "23210"
+	echo
 	CompareFiles
 	PrintBidirectionalMenu
 }

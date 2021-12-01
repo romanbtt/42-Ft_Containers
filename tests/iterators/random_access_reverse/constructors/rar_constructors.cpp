@@ -26,7 +26,7 @@ void	random_access_reverse_copy_constructors(char *argv)
     testFile << "NS::vector<int>::reverse_iterator copy(original)\n\n";
 
     testFile << "original point to : " << *original << '\n';
-    testFile << "copy point to : " << *copy << '\n';
+    testFile << "copy point to     : " << *copy << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -69,7 +69,7 @@ void	random_access_reverse_operator_equal(char *argv)
     testFile << "NS::vector<int>::reverse_iterator copy = original\n\n";
 
     testFile << "original point to : " << *original << '\n';
-    testFile << "copy point to : " << *copy << '\n';
+    testFile << "copy point to     : " << *copy << '\n';
     testFile.close();
     if (runAll == false)
     {

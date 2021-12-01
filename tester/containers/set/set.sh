@@ -47,16 +47,18 @@ function SetAll()
 	echo
 
 	echo -e $BWhite "Test Get_allocator" $Color_Off
-	$ft "14711"
-	$std "14711"
+	Execute $ft "14711"
+	Execute $std "14711"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Set Relational Operators" $Color_Off
 	echo
 
 	echo -e $BWhite "Test Relational Operators" $Color_Off
-	$ft "14811"
-	$std "14811"
+	Execute $ft "14811"
+	Execute $std "14811"
+	echo
 	CompareFiles
 
 	if [[ $1 == '1' ]]

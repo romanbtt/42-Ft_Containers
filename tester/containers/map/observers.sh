@@ -7,23 +7,28 @@ function MapObservers()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapObserversMenu
 }
 
 function MapAllObservers()
 {
-	echo -e $BWhite "Test Key_comp" $Color_Off
-	$ft "12611"
-	$std "12611"
+	echo -e $BWhite "Test Map Key_comp" $Color_Off
+	Execute $ft "12611"
+	Execute $std "12611"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Value_comp" $Color_Off
-	$ft "12621"
-	$std "12621"
+	echo -e $BWhite "Test Map Value_comp" $Color_Off
+	Execute $ft "12621"
+	Execute $std "12621"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function MapObserversMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapObservers "Test Key_comp" "12610"
+			MapObservers "Test Map Key_comp" "12610"
 		elif [[ $input == "2" ]]
 		then
-			MapObservers "Test Value_comp" "12620"
+			MapObservers "Test Map Value_comp" "12620"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllObservers '1'

@@ -57,7 +57,7 @@ void	random_access_decrement(char *argv)
     testFile << "namespace::vector<int>::iterator it_test = test.end()\n\n";
     testFile << "*(--it_test) : " << *(--it_test) << '\n';
 	testFile << "*(it_test--) : " << *(it_test--) << '\n';
-	testFile << "*it_test-- : " << *it_test-- << '\n';
+	testFile << "*it_test--   : " << *it_test-- << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -85,7 +85,7 @@ void	random_access_increment(char *argv)
     testFile << "namespace::vector<int>::iterator it_test = test.begin()\n\n";
     testFile << "*(++it_test) : " << *(++it_test) << '\n';
 	testFile << "*(it_test++) : " << *(it_test++) << '\n';
-	testFile << "*it_test++ : " << *it_test++ << '\n';
+	testFile << "*it_test++   : " << *it_test++ << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -114,7 +114,7 @@ void	random_access_minus(char *argv)
 	    NS::vector<int>::iterator it_test2 = test.end() - 5;
     testFile << "namespace::vector<int>::iterator it_test2 = test.end() - 5\n\n";
 	it_test1 = it_test1 - 2;
-    testFile << "it_test1 = it_test1 - 2 : " << *it_test1  << '\n';
+    testFile << "it_test1 = it_test1 - 2         : " << *it_test1  << '\n';
 	*it_test1 = it_test1 - it_test2;
 	testFile << "*it_test1 = it_test1 - it_test2 : " << *it_test1 << '\n';
     testFile.close();

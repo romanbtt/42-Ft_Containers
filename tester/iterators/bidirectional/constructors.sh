@@ -7,27 +7,33 @@ function BidirectionalConstructors()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintBidirectionalConstructorsMenu
 }
 
 function BidirectionalAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "23111"
-	$std "23111"
+	echo -e $BWhite "Test Bidirectional Default constructor" $Color_Off
+	Execute $ft "23111"
+	Execute $std "23111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "23121"
-	$std "23121"
+	echo -e $BWhite "Test Bidirectional Copy constructor" $Color_Off
+	Execute $ft "23121"
+	Execute $std "23121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "23131"
-	$std "23131"
+	echo -e $BWhite "Test Bidirectional Operator Equal" $Color_Off
+	Execute $ft "23131"
+	Execute $std "23131"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -56,13 +62,13 @@ function BidirectionalConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			BidirectionalConstructors "Test Default constructor" "23110"
+			BidirectionalConstructors "Test Bidirectional Default constructor" "23110"
 		elif [[ $input == "2" ]]
 		then
-			BidirectionalConstructors "Test Copy constructor" "23120"
+			BidirectionalConstructors "Test Bidirectional Copy constructor" "23120"
 		elif [[ $input == "3" ]]
 		then
-			BidirectionalConstructors "Test Operator Equal" "23130"
+			BidirectionalConstructors "Test Bidirectional Operator Equal" "23130"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			BidirectionalAllConstructors '1'

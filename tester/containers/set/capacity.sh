@@ -7,27 +7,33 @@ function SetCapacity()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintSetCapacityMenu
 }
 
 function SetAllCapacity()
 {
-	echo -e $BWhite "Test Empty" $Color_Off
-	$ft "14311"
-	$std "14311"
+	echo -e $BWhite "Test Set Empty" $Color_Off
+	Execute $ft "14311"
+	Execute $std "14311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Size" $Color_Off
-	$ft "14321"
-	$std "14321"
+	echo -e $BWhite "Test Set Size" $Color_Off
+	Execute $ft "14321"
+	Execute $std "14321"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Max Size" $Color_Off
-	$ft "14331"
-	$std "14331"
+	echo -e $BWhite "Test Set Max Size" $Color_Off
+	Execute $ft "14331"
+	Execute $std "14331"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -56,13 +62,13 @@ function SetCapacityMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			SetCapacity "Test Empty" "14310"
+			SetCapacity "Test Set Empty" "14310"
 		elif [[ $input == "2" ]]
 		then
-			SetCapacity "Test Size" "14320"
+			SetCapacity "Test Set Size" "14320"
 		elif [[ $input == "3" ]]
 		then
-			SetCapacity "Test Max Size" "14330"
+			SetCapacity "Test Set Max Size" "14330"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			SetAllCapacity '1'

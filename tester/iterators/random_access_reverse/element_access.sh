@@ -7,23 +7,28 @@ function RandomAccessReverseElementAccess()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessReverseElementAccessMenu
 }
 
 function RandomAccessReverseAllElementAccess()
 {
-	echo -e $BWhite "Test Operator []" $Color_Off
-	$ft "22211"
-	$std "22211"
+	echo -e $BWhite "Test Reverse Access Random Operator []" $Color_Off
+	Execute $ft "22211"
+	Execute $std "22211"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator *" $Color_Off
-	$ft "22221"
-	$std "22221"
+	echo -e $BWhite "Test Reverse Access Random Operator *" $Color_Off
+	Execute $ft "22221"
+	Execute $std "22221"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function RandomAccessReverseElementAccessMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessReverseElementAccess "Test Operator []" "22210"
+			RandomAccessReverseElementAccess "Test Reverse Access Random Operator []" "22210"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessReverseElementAccess "Test Operator '*'" "22220"
+			RandomAccessReverseElementAccess "Test Reverse Access Random Operator '*'" "22220"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessReverseAllElementAccess '1'

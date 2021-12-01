@@ -6,32 +6,42 @@ function VectorIterator()
 {
 	echo -e $BWhite $1 $Color_Off
 	echo
+
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
 	echo
+	Execute $ft $2
+	echo
+
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
+
 	CompareFiles
 	PrintVectorIteratorsMenu
 }
 
 function VectorAllIterators()
 {
-	echo -e $BWhite "Test Begin" $Color_Off
-	$ft "11211"
-	$std "11211"
+	echo -e $BWhite "Test Vector Begin" $Color_Off
+	Execute $ft "11211"
+	Execute $std "11211"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test End" $Color_Off
-	$ft "11221"
-	$std "11221"
+	echo -e $BWhite "Test Vector End" $Color_Off
+	Execute $ft "11221"
+	Execute $std "11221"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rbegin" $Color_Off
-	$ft "11231"
-	$std "11231"
+	echo -e $BWhite "Test Vector Rbegin" $Color_Off
+	Execute $ft "11231"
+	Execute $std "11231"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Rend" $Color_Off
-	$ft "11241"
-	$std "11241"
+	echo -e $BWhite "Test Vector Rend" $Color_Off
+	Execute $ft "11231"
+	Execute $std "11231"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -61,16 +71,16 @@ function VectorIteratorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			VectorIterator "Test Begin" "11210"
+			VectorIterator "Test Vector Begin" "11210"
 		elif [[ $input == "2" ]]
 		then
-			VectorIterator "Test End" "11220"
+			VectorIterator "Test Vector End" "11220"
 		elif [[ $input == "3" ]]
 		then
-			VectorIterator "Test Rbegin" "11230"
+			VectorIterator "Test Vector Rbegin" "11230"
 		elif [[ $input == "4" ]]
 		then
-			VectorIterator "Test Rend" "11240"
+			VectorIterator "Test Vector Rend" "11240"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorAllIterators '1'

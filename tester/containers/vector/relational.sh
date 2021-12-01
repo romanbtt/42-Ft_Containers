@@ -7,10 +7,13 @@ function VectorRelationalOperators()
 	echo -e $BWhite "Test Relational Operators" $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft "11710"
+	echo
+	Execute $ft "11710"
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std "11710"
+	echo
+	Execute $std "11710"
+	echo
 	CompareFiles
 	PrintVectorMenu
 }

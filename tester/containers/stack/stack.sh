@@ -7,10 +7,13 @@ function StackTests()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintStackMenu
 }
@@ -18,38 +21,45 @@ function StackTests()
 function StackAll()
 {
 	echo -e $BBlue "Tests Stack Constructors" $Color_Off
-	$ft "13101"
-	$std "13101"
+	Execute $ft "13101"
+	Execute $std "13101"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Stack Empty" $Color_Off
-	$ft "13201"
-	$std "13201"
+	Execute $ft "13201"
+	Execute $std "13201"
+	echo
 	CompareFiles
 	
 	echo -e $BBlue "Tests Stack Size" $Color_Off
-	$ft "13301"
-	$std "13301"
+	Execute $ft "13301"
+	Execute $std "13301"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Stack Top" $Color_Off
-	$ft "13401"
-	$std "13401"
+	Execute $ft "13401"
+	Execute $std "13401"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Stack Push" $Color_Off
-	$ft "13501"
-	$std "13501"
+	Execute $ft "13501"
+	Execute $std "13501"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Stack Pop" $Color_Off
-	$ft "13601"
-	$std "13601"
+	Execute $ft "13601"
+	Execute $std "13601"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Stack Relational operators" $Color_Off
-	$ft "13701"
-	$std "13701"
+	Execute $ft "13701"
+	Execute $std "13701"
+	echo
 	CompareFiles
 
 	if [[ $1 == '1' ]]
@@ -84,25 +94,25 @@ function StackMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			StackTests "Test Constructors" "13100"
+			StackTests "Test Stack Constructors" "13100"
 		elif [[ $input == "2" ]]
 		then
-			StackTests "Test Empty" "13200"
+			StackTests "Test Stack Empty" "13200"
 		elif [[ $input == "3" ]]
 		then
-			StackTests "Test Size" "13300"
+			StackTests "Test Stack Size" "13300"
 		elif [[ $input == "4" ]]
 		then
-			StackTests "Test Top" "13400"
+			StackTests "Test Stack Top" "13400"
 		elif [[ $input == "5" ]]
 		then
-			StackTests "Test Push" "13500"
+			StackTests "Test Stack Push" "13500"
 		elif [[ $input == "6" ]]
 		then
-			StackTests "Test Pop" "13600"
+			StackTests "Test Stack Pop" "13600"
 		elif [[ $input == "7" ]]
 		then
-			StackTests "Test Relational operators" "13700"
+			StackTests "Test Stack Relational operators" "13700"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			StackAll '1'

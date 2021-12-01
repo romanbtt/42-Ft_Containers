@@ -7,35 +7,43 @@ function MapOperations()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintMapOperationsMenu
 }
 
 function MapAllOperations()
 {
-	echo -e $BWhite "Test Find" $Color_Off
-	$ft "12711"
-	$std "12711"
+	echo -e $BWhite "Test Map Find" $Color_Off
+	Execute $ft "12711"
+	Execute $std "12711"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Count" $Color_Off
-	$ft "12721"
-	$std "12721"
+	echo -e $BWhite "Test Map Count" $Color_Off
+	Execute $ft "12721"
+	Execute $std "12721"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Lower_bound" $Color_Off
-	$ft "12731"
-	$std "12731"
+	echo -e $BWhite "Test Map Lower_bound" $Color_Off
+	Execute $ft "12731"
+	Execute $std "12731"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Upper_bound" $Color_Off
-	$ft "12741"
-	$std "12741"
+	echo -e $BWhite "Test Map Upper_bound" $Color_Off
+	Execute $ft "12741"
+	Execute $std "12741"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Equal_range" $Color_Off
-	$ft "12751"
-	$std "12751"
+	echo -e $BWhite "Test Map Equal_range" $Color_Off
+	Execute $ft "12751"
+	Execute $std "12751"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -66,19 +74,19 @@ function MapOperationsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			MapOperations "Test Find" "12710"
+			MapOperations "Test Map Find" "12710"
 		elif [[ $input == "2" ]]
 		then
-			MapOperations "Test Count" "12720"
+			MapOperations "Test Map Count" "12720"
 		elif [[ $input == "3" ]]
 		then
-			MapOperations "Test Lower_bound" "12730"
+			MapOperations "Test Map Lower_bound" "12730"
 		elif [[ $input == "4" ]]
 		then
-			MapOperations "Test Upper_bound" "12740"
+			MapOperations "Test Map Upper_bound" "12740"
 		elif [[ $input == "5" ]]
 		then
-			MapOperations "Test Equal_range" "12750"
+			MapOperations "Test Map Equal_range" "12750"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			MapAllOperations '1'

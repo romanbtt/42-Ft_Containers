@@ -7,23 +7,28 @@ function RandomAccessElementAccess()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessElementAccessMenu
 }
 
 function RandomAccessAllElementAccess()
 {
-	echo -e $BWhite "Test Operator []" $Color_Off
-	$ft "21211"
-	$std "21211"
+	echo -e $BWhite "Test Random Access Operator []" $Color_Off
+	Execute $ft "21211"
+	Execute $std "21211"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator *" $Color_Off
-	$ft "21221"
-	$std "21221"
+	echo -e $BWhite "Test Random Access Operator *" $Color_Off
+	Execute $ft "21221"
+	Execute $std "21221"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function RandomAccessElementAccessMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessElementAccess "Test Operator []" "21210"
+			RandomAccessElementAccess "Test Random Access Operator []" "21210"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessElementAccess "Test Operator '*'" "21220"
+			RandomAccessElementAccess "Test Random Access Operator '*'" "21220"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessAllElementAccess '1'

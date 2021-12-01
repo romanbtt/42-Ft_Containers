@@ -26,8 +26,9 @@ function RandomAccessReverseAll()
 	echo
 
 	echo -e $BWhite "Test Random Access Reverse Relational Operators" $Color_Off
-	$ft "22411"
-	$std "22411"
+	Execute $ft "22411"
+	Execute $std "22411"
+	echo
 	CompareFiles
 
 

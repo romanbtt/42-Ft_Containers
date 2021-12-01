@@ -7,27 +7,33 @@ function RandomAccessReverseConstructors()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessReverseConstructorsMenu
 }
 
 function RandomAccessReverseAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "22111"
-	$std "22111"
+	echo -e $BWhite "Test Reverse Access Random Default constructor" $Color_Off
+	Execute $ft "22111"
+	Execute $std "22111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "22121"
-	$std "22121"
+	echo -e $BWhite "Test Reverse Access Random Copy constructor" $Color_Off
+	Execute $ft "22121"
+	Execute $std "22121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "22131"
-	$std "22131"
+	echo -e $BWhite "Test Reverse Access Random Operator Equal" $Color_Off
+	Execute $ft "22131"
+	Execute $std "22131"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -56,13 +62,13 @@ function RandomAccessReverseConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessReverseConstructors "Test Default constructor" "22110"
+			RandomAccessReverseConstructors "Test Reverse Access Random Default constructor" "22110"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessReverseConstructors "Test Copy constructor" "22120"
+			RandomAccessReverseConstructors "Test Reverse Access Random Copy constructor" "22120"
 		elif [[ $input == "3" ]]
 		then
-			RandomAccessReverseConstructors "Test Operator Equal" "22130"
+			RandomAccessReverseConstructors "Test Reverse Access Random Operator Equal" "22130"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessReverseAllConstructors '1'

@@ -65,7 +65,7 @@ void	vector_back(char *argv)
         testFile << "| " << test[i] << " |";
     }
     testFile << '\n';
-	testFile << "Back of vector<int> : " << test.back();
+	testFile << "Back of vector<int>    : " << test.back();
     testFile << '\n';
     testFile.close();
     if (runAll == false)
@@ -89,7 +89,7 @@ void	vector_front(char *argv)
         testFile << "| " << test[i] << " |";
     }
     testFile << '\n';
-	testFile << "Front of vector<int> : " << test.front();
+	testFile << "Front of vector<int>   : " << test.front();
     testFile << '\n';
     testFile.close();
     if (runAll == false)

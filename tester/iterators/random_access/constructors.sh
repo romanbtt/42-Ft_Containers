@@ -7,27 +7,33 @@ function RandomAccessConstructors()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessConstructorsMenu
 }
 
 function RandomAccessAllConstructors()
 {
-	echo -e $BWhite "Test Default constructor" $Color_Off
-	$ft "21111"
-	$std "21111"
+	echo -e $BWhite "Test Random Access Default constructor" $Color_Off
+	Execute $ft "21111"
+	Execute $std "21111"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Copy constructor" $Color_Off
-	$ft "21121"
-	$std "21121"
+	echo -e $BWhite "Test Random Access Copy constructor" $Color_Off
+	Execute $ft "21121"
+	Execute $std "21121"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Operator Equal" $Color_Off
-	$ft "21131"
-	$std "21131"
+	echo -e $BWhite "Test Random Access Operator Equal" $Color_Off
+	Execute $ft "21131"
+	Execute $std "21131"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -56,13 +62,13 @@ function RandomAccessConstructorsMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessConstructors "Test Default constructor" "21110"
+			RandomAccessConstructors "Test Random Access Default constructor" "21110"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessConstructors "Test Copy constructor" "21120"
+			RandomAccessConstructors "Test Random Access Copy constructor" "21120"
 		elif [[ $input == "3" ]]
 		then
-			RandomAccessConstructors "Test Operator Equal" "21130"
+			RandomAccessConstructors "Test Random Access Operator Equal" "21130"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessAllConstructors '1'

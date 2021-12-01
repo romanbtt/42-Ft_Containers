@@ -17,9 +17,10 @@ function BidirectionalAll()
 	echo -e $BBlue "Tests Bidirectional Element Access" $Color_Off
 	echo
 	
-	echo -e $BWhite "Test Element Access" $Color_Off
-	$ft "23211"
-	$std "23211"
+	echo -e $BWhite "Test Bidirectional Element Access" $Color_Off
+	Execute $ft "23211"
+	Execute $std "23211"
+	echo
 	CompareFiles
 	
 	echo -e $BBlue "Tests Bidirectional Arithmetic" $Color_Off
@@ -29,9 +30,10 @@ function BidirectionalAll()
 	echo -e $BBlue "Tests Bidirectional Relational Operators" $Color_Off
 	echo
 
-	echo -e $BWhite "Test Relational Operators" $Color_Off
-	$ft "23411"
-	$std "23411"
+	echo -e $BWhite "Test Bidirectional Relational Operators" $Color_Off
+	Execute $ft "23411"
+	Execute $std "23411"
+	echo
 	CompareFiles
 
 	if [[ $1 == '1' ]]

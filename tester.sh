@@ -13,19 +13,35 @@ function TestSubject()
 
 	echo -n "Please, enter a seed value : "
 	read input
+	echo
 
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2 $input
+	echo
+	Execute $ft $2 $input
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2 $input
+	echo
+	Execute $std $2 $input
+	echo
 	CompareFiles
 	PrintMainMenu
 }
 
+function Execute()
+{
+	start_time=$(date +%s.%3N)
+
+	$1 $2 $3
+
+	end_time=$(date +%s.%3N)
+	elapsed=$(echo "scale=3; $end_time - $start_time" | bc)
+
+	echo
+	echo "$1 took $elapsed to execute."
+}
+
 function CompareFiles()
 {
-	echo
 	diff ft std > /dev/null
 	if [ $? == 0 ]
 	then

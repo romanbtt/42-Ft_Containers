@@ -83,7 +83,7 @@ static void	print_set(std::ofstream & file, NS::set<int> & test)
 {
 	file << "Size of set<int> test      : " << test.size();
 
-   	file << "\nContent of set<int> test : ";
+   	file << "\nContent of set<int> test   : ";
    	for (NS::set<int>::iterator it = test.begin(); it != test.end(); it++)
        file << "| " << *it << " |";
 }

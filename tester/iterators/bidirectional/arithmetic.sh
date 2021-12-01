@@ -7,23 +7,28 @@ function BidirectionalArithmetic()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintBidirectionalArithmeticMenu
 }
 
 function BidirectionalAllArithmetic()
 {
-	echo -e $BWhite "Test Increment" $Color_Off
-	$ft "23311"
-	$std "23311"
+	echo -e $BWhite "Test Bidirectional Increment" $Color_Off
+	Execute $ft "23311"
+	Execute $std "23311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Decrement" $Color_Off
-	$ft "23321"
-	$std "23321"
+	echo -e $BWhite "Test Bidirectional Decrement" $Color_Off
+	Execute $ft "23321"
+	Execute $std "23321"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -51,10 +56,10 @@ function BidirectionalArithmeticMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-		 BidirectionalArithmetic "Test Incrementation" "23310"
+		 BidirectionalArithmetic "Test Bidirectional Incrementation" "23310"
 		elif [[ $input == "2" ]]
 		then
-		 BidirectionalArithmetic "Test Decremention" "23320"
+		 BidirectionalArithmetic "Test Bidirectional Decremention" "23320"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 		 BidirectionalAllArithmetic '1'

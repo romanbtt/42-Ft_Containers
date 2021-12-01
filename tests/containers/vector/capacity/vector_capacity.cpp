@@ -84,16 +84,16 @@ void	vector_reserve(char *argv)
     NS::vector<int> test(10, 42);
 	testFile << "namespace::vector<int> test(10, 42)\n";
 
-    testFile << "Size of vector<int> before reserve : " << test.size() << '\n';
+    testFile << "Size of vector<int> before reserve     : " << test.size() << '\n';
 	testFile << "Capacity of vector<int> before reserve : " << test.capacity() << '\n';
 	testFile << "\ntest.reserve(84)\n";
 	test.reserve(84);
-	testFile << "Size of vector<int> after reserve : " << test.size() << '\n';
-	testFile << "Capacity of vector<int> after reserve : " << test.capacity() << '\n';
+	testFile << "Size of vector<int> after reserve      : " << test.size() << '\n';
+	testFile << "Capacity of vector<int> after reserve  : " << test.capacity() << '\n';
 	testFile << "\ntest.reserve(42)\n";
 	test.reserve(42);
-	testFile << "Size of vector<int> after reserve : " << test.size() << '\n';
-	testFile << "Capacity of vector<int> after reserve : " << test.capacity() << '\n';
+	testFile << "Size of vector<int> after reserve      : " << test.size() << '\n';
+	testFile << "Capacity of vector<int> after reserve  : " << test.capacity() << '\n';
     testFile.close();
     if (runAll == false)
     {
@@ -111,23 +111,23 @@ void	vector_resize(char *argv)
     NS::vector<int> test(5, 42);
 
 	testFile << "namespace::vector<int> test(5, 42)\n";
-    testFile << "Size of vector<int> before resize : " << test.size() << '\n';
+    testFile << "Size of vector<int> before resize     : " << test.size() << '\n';
 	testFile << "Capacity of vector<int> before resize : " << test.capacity() << '\n';
-	testFile << "Content of vector<int> before resize : ";
+	testFile << "Content of vector<int> before resize  : ";
     for (NS::vector<int>::iterator it = test.begin(); it != test.end(); it++)
        testFile << "| " << *it << " |";
 	testFile << "\n\ntest.resize(10, 84)\n";
 	test.resize(10, 84);
-	testFile << "Size of vector<int> after resize : " << test.size() << '\n';
-	testFile << "Capacity of vector<int> after resize : " << test.capacity() << '\n';
-	testFile << "Content of vector<int> after resize : ";
+	testFile << "Size of vector<int> after resize      : " << test.size() << '\n';
+	testFile << "Capacity of vector<int> after resize  : " << test.capacity() << '\n';
+	testFile << "Content of vector<int> after resize   : ";
 	for (NS::vector<int>::iterator it = test.begin(); it != test.end(); it++)
        testFile << "| " << *it << " |";
 	test.resize(2);
 	testFile << "\n\ntest.resize(2)\n";
-	testFile << "Size of vector<int> after resize : " << test.size() << '\n';
-	testFile << "Capacity of vector<int> after resize : " << test.capacity() << '\n';
-	testFile << "Content of vector<int> after resize : ";
+	testFile << "Size of vector<int> after resize      : " << test.size() << '\n';
+	testFile << "Capacity of vector<int> after resize  : " << test.capacity() << '\n';
+	testFile << "Content of vector<int> after resize   : ";
     for (NS::vector<int>::iterator it = test.begin(); it != test.end(); it++)
        testFile << "| " << *it << " |";
 	testFile << '\n';

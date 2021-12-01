@@ -41,16 +41,18 @@ function VectorAll()
 	echo
 
 	echo -e $BWhite "Test Get_allocator" $Color_Off
-	$ft "11611"
-	$std "11611"
+	Execute $ft "11611"
+	Execute $std "11611"
+	echo
 	CompareFiles
 
 	echo -e $BBlue "Tests Vector Relational Operators" $Color_Off
 	echo
 
 	echo -e $BWhite "Test Relational Operators" $Color_Off
-	$ft "11711"
-	$std "11711"
+	Execute $ft "11711"
+	Execute $std "11711"
+	echo
 	CompareFiles
 
 	if [[ $1 == '1' ]]

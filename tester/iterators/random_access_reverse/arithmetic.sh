@@ -7,35 +7,43 @@ function RandomAccessReverseArithmetic()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessReverseArithmeticMenu
 }
 
 function RandomAccessReverseAllArithmetic()
 {
-	echo -e $BWhite "Test Increment" $Color_Off
-	$ft "22311"
-	$std "22311"
+	echo -e $BWhite "Test Reverse Access Random Increment" $Color_Off
+	Execute $ft "22311"
+	Execute $std "22311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Decrement" $Color_Off
-	$ft "22321"
-	$std "22321"
+	echo -e $BWhite "Test Reverse Access Random Decrement" $Color_Off
+	Execute $ft "22321"
+	Execute $std "22321"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Addition" $Color_Off
-	$ft "22331"
-	$std "22331"
+	echo -e $BWhite "Test Reverse Access Random Addition" $Color_Off
+	Execute $ft "22331"
+	Execute $std "22331"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Substraction" $Color_Off
-	$ft "22341"
-	$std "22341"
+	echo -e $BWhite "Test Reverse Access Random Substraction" $Color_Off
+	Execute $ft "22341"
+	Execute $std "22341"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Compound operators" $Color_Off
-	$ft "22351"
-	$std "22351"
+	echo -e $BWhite "Test Reverse Access Random Compound operators" $Color_Off
+	Execute $ft "22351"
+	Execute $std "22351"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -66,19 +74,19 @@ function RandomAccessReverseArithmeticMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessReverseArithmetic "Test Incrementation" "22310"
+			RandomAccessReverseArithmetic "Test Reverse Access Random Incrementation" "22310"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessReverseArithmetic "Test Decremention" "22320"
+			RandomAccessReverseArithmetic "Test Reverse Access Random Decremention" "22320"
 		elif [[ $input == "3" ]]
 		then
-			RandomAccessReverseArithmetic "Test Addition" "22330"
+			RandomAccessReverseArithmetic "Test Reverse Access Random Addition" "22330"
 		elif [[ $input == "4" ]]
 		then
-			RandomAccessReverseArithmetic "Test Substraction" "22340"
+			RandomAccessReverseArithmetic "Test Reverse Access Random Substraction" "22340"
 		elif [[ $input == "5" ]]
 		then
-			RandomAccessReverseArithmetic "Test Compound operators" "22350"
+			RandomAccessReverseArithmetic "Test Reverse Access Random Compound operators" "22350"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessReverseAllArithmetic '1'

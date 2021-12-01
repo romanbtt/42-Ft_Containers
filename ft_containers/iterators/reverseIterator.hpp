@@ -13,8 +13,8 @@
 #ifndef reverse_iterator_H
 # define reverse_iterator_H
 
-# include "iterator_traits.hpp"
-# include "type_traits.hpp"
+# include "iteratorTraits.hpp"
+# include "typeTraits.hpp"
 
 namespace ft
 {

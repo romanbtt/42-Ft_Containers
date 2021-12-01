@@ -7,35 +7,43 @@ function RandomAccessArithmetic()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintRandomAccessArithmeticMenu
 }
 
 function RandomAccessAllArithmetic()
 {
-	echo -e $BWhite "Test Increment" $Color_Off
-	$ft "21311"
-	$std "21311"
+	echo -e $BWhite "Test Random Access Increment" $Color_Off
+	Execute $ft "21311"
+	Execute $std "21311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Decrement" $Color_Off
-	$ft "21321"
-	$std "21321"
+	echo -e $BWhite "Test Random Access Decrement" $Color_Off
+	Execute $ft "21321"
+	Execute $std "21321"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Addition" $Color_Off
-	$ft "21331"
-	$std "21331"
+	echo -e $BWhite "Test Random Access Addition" $Color_Off
+	Execute $ft "21331"
+	Execute $std "21331"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Substraction" $Color_Off
-	$ft "21341"
-	$std "21341"
+	echo -e $BWhite "Test Random Access Substraction" $Color_Off
+	Execute $ft "21341"
+	Execute $std "21341"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Compound operators" $Color_Off
-	$ft "21351"
-	$std "21351"
+	echo -e $BWhite "Test Random Access Compound operators" $Color_Off
+	Execute $ft "21351"
+	Execute $std "21351"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -66,19 +74,19 @@ function RandomAccessArithmeticMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			RandomAccessArithmetic "Test Incrementation" "21310"
+			RandomAccessArithmetic "Test Random Access Incrementation" "21310"
 		elif [[ $input == "2" ]]
 		then
-			RandomAccessArithmetic "Test Decremention" "21320"
+			RandomAccessArithmetic "Test Random Access Decremention" "21320"
 		elif [[ $input == "3" ]]
 		then
-			RandomAccessArithmetic "Test Addition" "21330"
+			RandomAccessArithmetic "Test Random Access Addition" "21330"
 		elif [[ $input == "4" ]]
 		then
-			RandomAccessArithmetic "Test Substraction" "21340"
+			RandomAccessArithmetic "Test Random Access Substraction" "21340"
 		elif [[ $input == "5" ]]
 		then
-			RandomAccessArithmetic "Test Compound operators" "21350"
+			RandomAccessArithmetic "Test Random Access Compound operators" "21350"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			RandomAccessAllArithmetic '1'

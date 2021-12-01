@@ -7,39 +7,48 @@ function VectorCapacity()
 	echo -e $BWhite $1 $Color_Off
 	echo
 	echo -e $BBlue "Namespace FT" $Color_Off
-	time $ft $2
+	echo
+	Execute $ft $2
 	echo
 	echo -e $BBlue "Namespace STD" $Color_Off
-	time $std $2
+	echo
+	Execute $std $2
+	echo
 	CompareFiles
 	PrintVectorCapacityMenu
 }
 
 function VectorAllCapacity()
 {
-	echo -e $BWhite "Test Size" $Color_Off
-	$ft "11311"
-	$std "11311"
+	echo -e $BWhite "Test Vector Size" $Color_Off
+	Execute $ft "11311"
+	Execute $std "11311"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Max Size" $Color_Off
-	$ft "11321"
-	$std "11321"
+	echo -e $BWhite "Test Vector Max Size" $Color_Off
+	Execute $ft "11321"
+	Execute $std "11321"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Resize" $Color_Off
-	$ft "11331"
-	$std "11331"
+	echo -e $BWhite "Test Vector Resize" $Color_Off
+	Execute $ft "11331"
+	Execute $std "11331"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Capacity" $Color_Off
-	$ft "11341"
-	$std "11341"
+	echo -e $BWhite "Test Vector Capacity" $Color_Off
+	Execute $ft "11341"
+	Execute $std "11341"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Empty" $Color_Off
-	$ft "11351"
-	$std "11351"
+	echo -e $BWhite "Test Vector Empty" $Color_Off
+	Execute $ft "11351"
+	Execute $std "11351"
+	echo
 	CompareFiles
-	echo -e $BWhite "Test Reserve" $Color_Off
-	$ft "11361"
-	$std "11361"
+	echo -e $BWhite "Test Vector Reserve" $Color_Off
+	Execute $ft "11361"
+	Execute $std "11361"
+	echo
 	CompareFiles
 	if [[ $1 == '1' ]]
 	then
@@ -71,22 +80,22 @@ function VectorCapacityMenu()
 		clear
 		if [[ $input == "1" ]]
 		then
-			VectorCapacity "Test Size" "11310"
+			VectorCapacity "Test Vector Size" "11310"
 		elif [[ $input == "2" ]]
 		then
-			VectorCapacity "Test Max Size" "11320"
+			VectorCapacity "Test Vector Max Size" "11320"
 		elif [[ $input == "3" ]]
 		then
-			VectorCapacity "Test Resize" "11330"
+			VectorCapacity "Test Vector Resize" "11330"
 		elif [[ $input == "4" ]]
 		then
-			VectorCapacity "Test Capacity" "11340"
+			VectorCapacity "Test Vector Capacity" "11340"
 		elif [[ $input == "5" ]]
 		then
-			VectorCapacity "Test Empty" "11350"
+			VectorCapacity "Test Vector Empty" "11350"
 		elif [[ $input == "6" ]]
 		then
-			VectorCapacity "Test Reserve" "11360"
+			VectorCapacity "Test Vector Reserve" "11360"
 		elif [[ $input == "A" || $input == "a" ]]
 		then
 			VectorAllCapacity '1'
